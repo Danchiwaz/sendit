@@ -1,0 +1,17 @@
+.status {
+    background-color: #CF9117;
+    text-align: center;
+    width: 40%;
+    color: white;
+    border-radius: 60px;
+}
+tr{
+    font-weight: 100;
+}
+.status-sent{
+    background-color: #5c3efb;
+        text-align: center;
+        width: 40%;
+        color: white;
+        border-radius: 60px;
+}

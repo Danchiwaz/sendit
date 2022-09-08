@@ -1,0 +1,35 @@
+.nav-text{
+    font-weight: bold;
+}
+.se{
+    color:#5732FB
+}
+.snd{
+    color:#000000;
+}
+.i{
+    color:#8B8721;
+}
+.custom-nav{
+ background-color: red;
+ height: 10vh;
+ background-color: white;
+}
+.custom-collapse{
+    margin-left: 6rem;
+    font-size:16px;
+    font-weight: 500;
+}
+.custom-btn{
+    background-color:#4F239E;
+    color: white;
+    border-radius: 40px;
+    margin-right: 2rem;
+    padding: 0.5rem 1.5rem;
+}
+.custom-LoginBtn{
+    color: black;
+    border: 1px solid #4F239E;
+    padding: 0.5rem 1.5rem;
+    border-radius: 40px;
+}

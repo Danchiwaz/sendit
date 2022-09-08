@@ -1,0 +1,305 @@
+    <div class="row g-1">
+      <div class="col-md-4 dash-card">
+        Deliveries
+      </div>
+      <div class="col-md-4 dash-card">
+        Countries
+      </div>
+      <div class="col-md-4 dash-card">
+        Clients
+      </div>
+    </div>
+    <!-- loop -->
+    <div class="row">
+          <div class="col-md-5">
+          <div class="card mb-2">
+            <div class="card-header header-card">
+              <div class="status">On Delivery</div>
+              <div class="card-btn">
+                <div class="update"><i class="fa-solid fa-trash"></i></div>
+                <div class="Delete"><i class="fa-solid fa-pen-nib"></i></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <small class="text-muted">Tracking No:</small>
+                  <p class="text-sm">12DHGNDJSSJY</p>
+                </div>
+                <div class="col-md-6 text-end">
+                  <small class="text-muted">Destination</small>
+                  <p class="text-sm">Nyeri - Nairobi</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="departure">
+                    <div class="dot"></div>
+                    <div class="dep_desc">
+                      <p class="dep">Departure Date</p>
+                      <p class="date">05 August, 2022</p>
+                    </div>
+                  </div>
+                  <div class="departure">
+                    <div class="dot"></div>
+                    <div class="dep_desc">
+                      <p class="dep">Departure Date</p>
+                      <p class="date">05 August, 2022</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn-map" data-bs-toggle="modal" data-bs-target="#exampleModal">Show Map</button>
+                </div>
+                <!-- modal  -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Location</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+     <google-map  height="400px"
+            width="750px"
+    [center]="center"
+    [zoom]="zoom"
+    (mapClick)="moveMap($event)"
+    (mapMousemove)="move($event)"
+    >
+    <map-marker *ngFor="let markerPosition of markerPositions"
+    [position]="markerPosition"
+    [options]="markerOptions">
+  </map-marker>
+  </google-map>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+                <!-- end of Modal  -->
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col-md-4 text-center">
+                    <p class="client">Client</p>
+                    <p class="name">James Mwathi</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <p class="client">Weight</p>
+                    <p class="name">12 Kgs</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <p class="client">Price</p>
+                    <p class="name">Ksh 1000</p>
+                </div>
+              </div>
+              <div class="row">
+                <button class="deliver_btn">Mark as Delivered</button>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <!-- end of loop -->
+         <!-- loop -->
+        <div class="col-md-5">
+          <div class="card mb-2">
+            <div class="card-header header-card">
+              <div class="status">On Delivery</div>
+              <div class="card-btn">
+                <div class="update"><i class="fa-solid fa-trash"></i></div>
+                <div class="Delete"><i class="fa-solid fa-pen-nib"></i></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <small class="text-muted">Tracking No:</small>
+                  <p class="text-sm">12DHGNDJSSJY</p>
+                </div>
+                <div class="col-md-6 text-end">
+                  <small class="text-muted">Destination</small>
+                  <p class="text-sm">Nyeri - Nairobi</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="departure">
+                    <div class="dot"></div>
+                    <div class="dep_desc">
+                      <p class="dep">Departure Date</p>
+                      <p class="date">05 August, 2022</p>
+                    </div>
+                  </div>
+                  <div class="departure">
+                    <div class="dot"></div>
+                    <div class="dep_desc">
+                      <p class="dep">Departure Date</p>
+                      <p class="date">05 August, 2022</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn-map">Show Map</button>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col-md-4 text-center">
+                    <p class="client">Client</p>
+                    <p class="name">James Mwathi</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <p class="client">Weight</p>
+                    <p class="name">12 Kgs</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <p class="client">Price</p>
+                    <p class="name">Ksh 1000</p>
+                </div>
+              </div>
+              <div class="row">
+                <button class="deliver_btn">Mark as Delivered</button>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <!-- end of loop -->
+          <div class="col-md-5">
+          <div class="card mb-2">
+            <div class="card-header header-card">
+              <div class="status">On Delivery</div>
+              <div class="card-btn">
+                <div class="update"><i class="fa-solid fa-trash"></i></div>
+                <div class="Delete"><i class="fa-solid fa-pen-nib"></i></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <small class="text-muted">Tracking No:</small>
+                  <p class="text-sm">12DHGNDJSSJY</p>
+                </div>
+                <div class="col-md-6 text-end">
+                  <small class="text-muted">Destination</small>
+                  <p class="text-sm">Nyeri - Nairobi</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="departure">
+                    <div class="dot"></div>
+                    <div class="dep_desc">
+                      <p class="dep">Departure Date</p>
+                      <p class="date">05 August, 2022</p>
+                    </div>
+                  </div>
+                  <div class="departure">
+                    <div class="dot"></div>
+                    <div class="dep_desc">
+                      <p class="dep">Departure Date</p>
+                      <p class="date">05 August, 2022</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn-map">Show Map</button>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col-md-4 text-center">
+                    <p class="client">Client</p>
+                    <p class="name">James Mwathi</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <p class="client">Weight</p>
+                    <p class="name">12 Kgs</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <p class="client">Price</p>
+                    <p class="name">Ksh 1000</p>
+                </div>
+              </div>
+              <div class="row">
+                <button class="deliver_btn">Mark as Delivered</button>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <!-- end of loop -->
+         <!-- loop -->
+        <div class="col-md-5">
+          <div class="card mb-2">
+            <div class="card-header header-card">
+              <div class="status">On Delivery</div>
+              <div class="card-btn">
+                <div class="update"><i class="fa-solid fa-trash"></i></div>
+                <div class="Delete"><i class="fa-solid fa-pen-nib"></i></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <small class="text-muted">Tracking No:</small>
+                  <p class="text-sm">12DHGNDJSSJY</p>
+                </div>
+                <div class="col-md-6 text-end">
+                  <small class="text-muted">Destination</small>
+                  <p class="text-sm">Nyeri - Nairobi</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="departure">
+                    <div class="dot"></div>
+                    <div class="dep_desc">
+                      <p class="dep">Departure Date</p>
+                      <p class="date">05 August, 2022</p>
+                    </div>
+                  </div>
+                  <div class="departure">
+                    <div class="dot"></div>
+                    <div class="dep_desc">
+                      <p class="dep">Departure Date</p>
+                      <p class="date">05 August, 2022</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn-map">Show Map</button>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col-md-4 text-center">
+                    <p class="client">Client</p>
+                    <p class="name">James Mwathi</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <p class="client">Weight</p>
+                    <p class="name">12 Kgs</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <p class="client">Price</p>
+                    <p class="name">Ksh 1000</p>
+                </div>
+              </div>
+              <div class="row">
+                <button class="deliver_btn">Mark as Delivered</button>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <!-- end of loop -->
+    </div>
+      

@@ -1,0 +1,98 @@
+<div class="row form-create">
+  <div class="col-md-8">
+    <form [formGroup]="createParcelForm" (ngSubmit)="createParcel()">
+      <div class="row"> 
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="">Sender:</label>
+            <select formControlName="sender" #sender class="form-select" aria-label="Default select example">
+              <option selected>Select user</option>
+              <option value="1">mainadnaniel@gmail.com</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+            <small class="text-muted" *ngIf="createParcelForm.get('sender')?.invalid && createParcelForm.get('sender')?.touched">Sender required</small>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="">Reicever:</label>
+            <select formControlName="receiver" class="form-select" aria-label="Default select example">
+              <option selected>Select user</option>
+              <option value="1">mainadnaniel@gmail.com</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+             <small class="text-muted" *ngIf="createParcelForm.get('receiver')?.invalid && createParcelForm.get('receiver')?.touched">Receiver required</small>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-12">
+          <div class="form-group">
+            <label for="">Weight:</label>
+            <input formControlName="weight" type="text" placeholder="weight in Kgs" class="form-control">
+             <small class="text-muted" *ngIf="createParcelForm.get('weight')?.invalid && createParcelForm.get('weight')?.touched">weight required</small>
+          </div>
+        </div>
+      </div>
+        <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="">From:</label>
+            <select formControlName="from" class="form-select" aria-label="Default select example">
+              <option value="1">Nyeri</option>
+              <option value="2">Nairobi</option>
+              <option value="3">Mombasa</option>
+            </select>
+             <small class="text-muted" *ngIf="createParcelForm.get('from')?.invalid && createParcelForm.get('from')?.touched">Required</small>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="">To:</label>
+            <select formControlName="to" class="form-select" aria-label="Default select example">
+              <option value="1">Nakuru</option>
+              <option value="2">Karatina</option>
+              <option value="3">Nanyuki</option>
+            </select>
+            <small class="text-muted" *ngIf="createParcelForm.get('to')?.invalid && createParcelForm.get('to')?.touched">Required</small>
+          </div>
+        </div>
+      </div>
+        <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="">Picked Date:</label>
+            <input formControlName="pick_date" type="date" placeholder="weight in Kgs" class="form-control">
+            <small class="text-muted" *ngIf="createParcelForm.get('pick_date')?.invalid && createParcelForm.get('pick_date')?.touched">Required</small>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="">Delivered Date:</label>
+            <input formControlName="deliver_date" type="date" placeholder="weight in Kgs" class="form-control">
+             <small class="text-muted" *ngIf="createParcelForm.get('deliver_date')?.invalid && createParcelForm.get('deliver_date')?.touched">Required</small>
+          </div>
+        </div>
+      </div>
+       <div class="row">
+          <div class="col-md-12">
+          <div class="form-group">
+            <label for="">Tracking Number:</label>
+            <input formControlName="tracking_no" type="" placeholder="example...XHT23JG" class="form-control">
+             <small class="text-muted" *ngIf="createParcelForm.get('tracking_no')?.invalid && createParcelForm.get('tracking_no')?.touched">Required</small>
+          </div>
+        </div>
+      </div>
+       <div class="row">
+          <div class="col-md-12">
+          <div class="form-group">
+        
+            <input [disabled]="createParcelForm.invalid" [ngClass]="{disabled:createParcelForm.invalid}" type="submit" value="Add Parcel" class="form-control">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+ <app-nav></app-nav>
+<div class="container form-signin">
+  <div class="row signin">
+    <div
+      class="col-md-4 social d-flex flex-column align-items-center justify-content-center"
+    >
+      <div class="login__desc">
+        <p class="text-white">Dont Have an Account?<a href="">Sign Up</a></p>
+      </div>
+      <div>
+        <div class="google d-flex gap-2 flex-row">
+          <button class="social-btn">
+            <i class="fa-brands img-btn fa-google-plus"></i
+            ><span>Sign in with Google</span>
+          </button>
+          <button class="social-btn">
+            <i class="fa-brands img-btn fa-facebook"></i
+            ><span>Sign in with Facebook</span>
+          </button>
+        </div>
+        <div class="google"></div>
+      </div>
+    </div>
+    <div
+      class="col-md-6 custom-form d-flex flex-column  justify-content-center"
+    >
+      <div>
+        <!-- <h2>Sign Up</h2> -->
+        <p class="text-muted">Login to your Account</p>
+      </div>
+      <form #loginForm="ngForm" novalidate (ngSubmit)="OnSubmitLogin(loginForm.value)">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="">Email:</label>
+              <input required #email="ngModel" ngModel name="email"  type="email" class="form-control" />
+              <small class="text-muted" *ngIf="email.touched && email.pristine">Email Required</small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+                <div class="d-flex align-content-center justify-content-between">
+                    <label for="">Password:</label>
+                    <p class="forgot-Password">Forgot Password?</p>
+                </div>
+              
+              <input required #password="ngModel" ngModel name="password" type="password" class="form-control" />
+              <small class="text-muted" *ngIf="password.touched && password.pristine">Password Required</small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-check">
+              <input
+                class="form-check-input check"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+              />
+              <label class="form-check-label" for="flexCheckDefault">
+                Remember this Information?
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <input
+                type="submit"
+                value="Login"
+                class="btn btn-primary custom-btn"
+                [disabled] ="loginForm.invalid"
+              />
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

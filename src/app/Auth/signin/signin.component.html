@@ -1,0 +1,82 @@
+<app-nav></app-nav>
+<div class="container form-signin">
+<div class="row signin">
+    
+    <div class="col-md-4 social d-flex flex-column align-items-center justify-content-center">
+        <div class="login__desc">
+            <p class="text-white">Already have an account?<a href="">Login</a></p>
+        </div>
+        <div>
+            <div class="google d-flex gap-2 flex-row">
+                <button class="social-btn"><i class="fa-brands img-btn fa-google-plus"></i><span>Sign in with Google</span></button>
+                <button class="social-btn"><i class="fa-brands img-btn fa-facebook"></i><span>Sign in with Facebook</span></button>
+            </div>
+        <div class="google"></div>
+        </div>
+        
+    </div>
+    <div class="col-md-6 custom-form">
+        <div>
+            <!-- <h2>Sign Up</h2> -->
+            <p class="text-muted">Create an account to start Enjoying Sendit services</p>
+        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="signUp()">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">FullNames:</label>
+                        <input formControlName="fullNames" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Username:</label>
+                        <input formControlName="username" type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Email:</label>
+                        <input formControlName="email" type="text" class="form-control">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="">Location:</label>
+                        <input formControlName="location" type="text" class="form-control">
+                    </div>
+                </div>
+                
+            </div>
+             <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Password:</label>
+                        <input formControlName="password" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Confirm Password:</label>
+                        <input formControlName="confirm_password" type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+             <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        
+                        <input [disabled]="registerForm.invalid" type="submit" value="Sign Up" class="btn btn-primary custom-btn">
+                    </div>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+</div>
+</div>

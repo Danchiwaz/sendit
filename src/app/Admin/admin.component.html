@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="row">
+    <!-- sidebar  -->
+    <div class="col-md-2 pl-2 pr-2 sidebar position-fixed">
+      <div class="row 2t-2">
+        <h5 class="nav-text">
+          <span class="se">Se</span> <span class="" nd>Nd</span>
+          <span class="i">i</span><span class=".snd">t</span>
+        </h5>
+      </div>
+      <div class="row">
+        <small class="text-muted">Admin WorkSpace</small>
+      </div>
+      <div class="row pt-1"><hr /></div>
+      <div class="bottom__section">
+        <div class="dashboard_btns">
+          <button [routerLink]="['/admin/dashboard']" class="btn bg-white text-warning">
+            <span class="text-muted icons"
+              ><i class="fa-solid pr-3 fa-house"></i
+            ></span>
+            Dashboard
+          </button>
+          <button class="btn bg-white text-warning">
+            <span class="text-muted icons"
+              ><i class="fa-solid fa-truck-fast"></i
+            ></span>
+            Shippments
+          </button>
+          <button class="btn bg-white text-warning">
+            <span class="text-muted icons"
+              ><i class="fa-solid fa-flag"></i
+            ></span>
+            Branches
+          </button>
+          <button [routerLink]="['/admin/client']" class="btn bg-white text-warning">
+            <span class="text-muted icons"
+              ><i class="fa-solid fa-person"></i
+            ></span>
+            Clients
+          </button>
+        </div>
+        <div class="bottom">
+          <div>
+            <button [routerLink]="['/admin/create']" class="btn bg-white shipBtn text-warning text-sm">
+              <span class="text-muted"
+                ><i class="fa-solid text-white fa-plus"></i
+              ></span>
+              Create Parcel
+            </button>
+          </div>
+          <hr />
+          <div class="bottom__btn">
+            <div class="user_desc">
+              <h6>Daniel Maina</h6>
+              <p class="text-muted">Admin</p>
+            </div>
+            <div class="btn_log" (click)="logoutBummy()">
+              <i class="fa-solid logout_btn fa-power-off"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end of sidebar  -->
+    <div class="col-md-10 ml-2 right__side">
+      <div class="row workarea">
+        <div class="search_bar">
+          <div class="search_menu" >
+            <i class="fa-solid fa-magnifying-glass"></i
+            ><input type="text" placeholder="Search here for a Parcel" />
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 workarea">
+         <router-outlet></router-outlet>
+         
+      </div>
+    </div>
+  </div>
+</div>

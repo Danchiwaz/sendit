@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-admin',
@@ -9,8 +10,12 @@ import { Router } from '@angular/router';
 export class AdminComponent implements OnInit {
   constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
   logoutBummy(){
    this.router.navigate(['/auth/login']);
   }
+
+  
 }

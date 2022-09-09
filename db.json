@@ -1,0 +1,92 @@
+{
+  "parcels": [
+    {
+      "id": 1,
+      "sender": "two",
+      "receiver": "three",
+      "weight": "12",
+      "price": 300443,
+      "from": "Nyeri",
+      "to": "Nakuru",
+      "pick_date": "2022-09-28",
+      "deliver_date": "2022-09-28",
+      "tracking_no": "QWDR234j"
+    },
+    {
+      "id": 2,
+      "sender": "mainadanie",
+      "receiver": "mainadaniel",
+      "weight": "23",
+      "price": 454,
+      "from": "Nyeri",
+      "to": "Nanyuki",
+      "pick_date": "2022-09-29",
+      "deliver_date": "2022-09-28",
+      "tracking_no": "DGHFHHJ"
+    },
+    {
+      "sender": "three",
+      "receiver": "two",
+      "weight": "43",
+      "price": 1230,
+      "from": [],
+      "to": "Karatina",
+      "pick_date": "2022-09-24",
+      "deliver_date": "2022-09-26",
+      "tracking_no": "123GHTDJ",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "sender": "mainadanie",
+      "receiver": "three",
+      "weight": "12",
+      "price": 1200,
+      "from": "Nyeri",
+      "to": "Karatina",
+      "pick_date": "2022-09-29",
+      "deliver_date": "2022-09-29",
+      "tracking_no": "QWD234HGN"
+    },
+    {
+      "sender": "three",
+      "receiver": "mainadaniel",
+      "weight": "tyftyf",
+      "price": 1233,
+      "from": {
+        "address": "320 West 57th Street, Ground Floor, New York, NY 10019, USA",
+        "latitude": 40.7669722,
+        "longitude": -73.9839611
+      },
+      "to": {
+        "address": "320 West 57th Street, Ground Floor, New York, NY 10019, USA",
+        "latitude": 40.7669722,
+        "longitude": -73.9839611
+      },
+      "pick_date": "2022-09-22",
+      "deliver_date": "2022-09-27",
+      "tracking_no": "frdgt65",
+      "id": 5
+    },
+    {
+      "sender": "two",
+      "receiver": "three",
+      "weight": "123",
+      "price": 123456,
+      "from": {
+        "address": "",
+        "latitude": "",
+        "longitude": ""
+      },
+      "to": {
+        "address": "",
+        "latitude": "",
+        "longitude": ""
+      },
+      "pick_date": "2022-09-30",
+      "deliver_date": "2022-09-30",
+      "tracking_no": "FDRGTH",
+      "id": 6
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 <div class="row form-create">
   <div class="col-md-8">
-    <form [formGroup]="createParcelForm" (ngSubmit)="createParcel()">
+    <form [formGroup]="createParcelForm" (ngSubmit)="Update()">
       <div class="row"> 
         <div class="col-md-6">
           <div class="form-group">
@@ -47,21 +47,22 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="">From:</label>
-             <input class="form-control" formControlName="from" ngx-google-places-autocomplete (onAddressChange)="handleAddressChange($event)" />
-             <input class="form-control" formControlName="fromLat" hidden [value]="userLatitude"  />
-             <input class="form-control" formControlName="fromLong" hidden [value]="userLongitude"  />
-            <!-- <select formControlName="from" class="form-select" aria-label="Default select example">
+            <select formControlName="from" class="form-select" aria-label="Default select example">
               <option value="Nyeri">Nyeri</option>
               <option value="Nairobi">Nairobi</option>
               <option value="Momabasa">Mombasa</option>
-            </select> -->
+            </select>
              <small class="text-muted" *ngIf="createParcelForm.get('from')?.invalid && createParcelForm.get('from')?.touched">Required</small>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="">To:</label>
-             <input class="form-control" formControlName="from" ngx-google-places-autocomplete (onAddressChange)="handleAddressChange1($event)" /> <!-- <input class="form-control" formControlName="to" ngx-google-places-autocomplete (onAddressChange)="handleAddressChange1($event)" /> -->
+            <select formControlName="to" class="form-select" aria-label="Default select example">
+              <option value="Nakuru">Nakuru</option>
+              <option value="Karatina">Karatina</option>
+              <option value="Nanyuki">Nanyuki</option>
+            </select>
             <small class="text-muted" *ngIf="createParcelForm.get('to')?.invalid && createParcelForm.get('to')?.touched">Required</small>
           </div>
         </div>
@@ -95,12 +96,10 @@
           <div class="col-md-12">
           <div class="form-group">
         
-            <input  type="submit" value="Add Parcel" class="form-control">
+            <input [disabled]="createParcelForm.invalid" [ngClass]="{disabled:createParcelForm.invalid}" type="submit" value="Update Parcel" class="form-control">
           </div>
         </div>
       </div>
     </form>
   </div>
 </div>
-<!-- [disabled]="createParcelForm.invalid"  -->
-<!-- [ngClass]="{disabled:createParcelForm.invalid}" -->

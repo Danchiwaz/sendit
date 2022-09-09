@@ -1,0 +1,33 @@
+.form-create {
+    margin-left: 2rem;
+}
+
+label {
+    color: #cf9117;
+    font-weight: 200;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+}
+
+input[type="submit"] {
+    background-color: #cf9117;
+    color: white;
+    border-radius: none !important;
+    margin-top: 2rem;
+}
+
+input {
+    border: 1px solid #988D8D;
+    outline: none !important;
+    outline-style: none !important;
+    outline-width: 0;
+}
+
+input::placeholder {
+    font-weight: 100;
+    color: lightgray;
+}
+
+.disabled {
+    opacity: 0.5;
+}

@@ -240,3 +240,12 @@
 .dash-card:hover{
     background-color: rgb(225, 224, 224);
 }
+
+.workarea {
+    margin-bottom: 1rem;
+    width: 100%;
+}
+.text-warning{
+    font-weight: 900;
+    font-size: 30px;
+}

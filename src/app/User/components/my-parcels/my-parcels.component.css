@@ -14,4 +14,6 @@ tr{
         width: 40%;
         color: white;
         border-radius: 60px;
+        padding-left: 1rem;
+        padding-right: 1rem;
 }

@@ -8,6 +8,6 @@ import { ErrorSuccessComponent } from './error-success/error-success.component';
 @NgModule({
   declarations: [NavComponent, ErrorSuccessComponent],
   imports: [CommonModule, RouterModule, GoogleMapsModule],
-  exports: [NavComponent],
+  exports: [NavComponent, ErrorSuccessComponent],
 })
 export class SharedModule {}

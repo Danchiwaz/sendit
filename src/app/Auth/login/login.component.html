@@ -1,4 +1,4 @@
- <app-nav></app-nav>
+<app-nav></app-nav>
 <div class="container form-signin">
   <div class="row signin">
     <div
@@ -21,33 +21,58 @@
         <div class="google"></div>
       </div>
     </div>
-    <div
-      class="col-md-6 custom-form d-flex flex-column  justify-content-center"
-    >
+    <div class="col-md-6 custom-form d-flex flex-column justify-content-center">
       <div>
         <!-- <h2>Sign Up</h2> -->
         <p class="text-muted">Login to your Account</p>
+         <app-error-success *ngIf="show" [message]=error (close)="close()"></app-error-success>
       </div>
-      <form #loginForm="ngForm" novalidate (ngSubmit)="OnSubmitLogin(loginForm.value)">
+      <form
+        #loginForm="ngForm"
+        novalidate
+        (ngSubmit)="OnSubmitLogin(loginForm.value)"
+      >
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
               <label for="">Email:</label>
-              <input required #username="ngModel" [ngModel] ="username" name="username"  type="text" class="form-control" />
-              <small class="text-muted" *ngIf="username.touched && username.pristine">Email Required</small>
+              <input
+                required
+                #username="ngModel"
+                ngModel
+                name="username"
+                type="text"
+                class="form-control"
+              />
+              <small
+                class="text-muted"
+                *ngIf="username.touched && username.pristine"
+                >Email Required</small
+              >
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
-                <div class="d-flex align-content-center justify-content-between">
-                    <label for="">Password:</label>
-                    <p class="forgot-Password">Forgot Password?</p>
-                </div>
-              
-              <input required #password="ngModel" [ngModel] ="password" name="password" type="password" class="form-control" />
-              <small class="text-muted" *ngIf="password.touched && password.pristine">Password Required</small>
+              <div class="d-flex align-content-center justify-content-between">
+                <label for="">Password:</label>
+                <p class="forgot-Password">Forgot Password?</p>
+              </div>
+
+              <input
+                required
+                #password="ngModel"
+                ngModel
+                name="password"
+                type="password"
+                class="form-control"
+              />
+              <small
+                class="text-muted"
+                *ngIf="password.touched && password.pristine"
+                >Password Required</small
+              >
             </div>
           </div>
         </div>
@@ -74,7 +99,7 @@
                 type="submit"
                 value="Login"
                 class="btn btn-primary custom-btn"
-                [disabled] ="loginForm.invalid"
+                [disabled]="loginForm.invalid"
               />
             </div>
           </div>

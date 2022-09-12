@@ -11,6 +11,7 @@ import { authReducer } from './AuthStore/reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './AuthStore/effects';
 import { HttpClientModule } from '@angular/common/http';
+import { ErrorComponent } from '../ErrorPage/error.component';
 
 
 

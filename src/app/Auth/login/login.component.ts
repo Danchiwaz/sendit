@@ -5,23 +5,39 @@ import { ILogin } from './interfaces/loginInterface';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  username:string;
-  password:string;
-  
-  constructor(private router:Router) { }
+  errorAlert: string = '';
+  password: string = '';
+  login:boolean = false;
+  show = false;
 
-  ngOnInit(): void {
+  error = 'Invalid credentials';
+
+  close() {
+    this.login = true;
   }
 
-  OnSubmitLogin(loginForm : any){
-    if(loginForm.username == 'Daniel' && loginForm.password == '123'){
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {}
+
+  OnSubmitLogin(loginForm: any) {
+    if (loginForm.username === 'Daniel' && loginForm.password === '1234') {
       this.router.navigate(['/admin']);
+    } else if (
+      loginForm.username === 'Naftaly' &&
+      loginForm.password === '1234'
+    ) {
+      this.router.navigate(['/user']);
+    } else {
+      this.show = true
+      
+        setTimeout(() => {
+          this.login = true;
+        }, 1000);
+      
     }
-    
   }
-  
-
 }

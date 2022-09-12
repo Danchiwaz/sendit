@@ -1,19 +1,13 @@
-.status {
-    background-color: #CF9117;
-    text-align: center;
-    width: 40%;
-    color: white;
-    border-radius: 60px;
-}
+
 tr{
     font-weight: 100;
 }
-.status-sent{
-    background-color: #5c3efb;
-        text-align: center;
-        width: 40%;
-        color: white;
-        border-radius: 60px;
-        padding-left: 1rem;
-        padding-right: 1rem;
+.table-design{
+    
+    margin-left: -1rem;
+    margin-right: 1rem;
+    
+}
+.bg-design{
+    background-color:#cf9117 ;
 }

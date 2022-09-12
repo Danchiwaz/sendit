@@ -19,11 +19,13 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { AppReducer } from './sharedAppStatus/store/app.reducer';
+import { ErrorComponent } from './ErrorPage/error.component';
+import { NavbarDirective } from './Directives/navbar.directive';
 
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ErrorComponent, NavbarDirective],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),

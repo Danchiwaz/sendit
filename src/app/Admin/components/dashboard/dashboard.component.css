@@ -1,251 +1,298 @@
 .nav-text {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .se {
-    color: #5732FB
+  color: #5732fb;
 }
 
 .snd {
-    color: #000000;
+  color: #000000;
 }
 
 .i {
-    color: #8B8721;
-}
-
-.sidebar {
-    height: 100vh;
-    padding-top: 1rem;
-    background-color: whitesmoke;
-    margin-top: 1rem;
-    border-radius: 4px;
+  color: #8b8721;
 }
 
 .dashboard_btns {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.dashboard_btns>button {
-    font-weight: 100;
+.dashboard_btns > button {
+  font-weight: 100;
 }
 
 .icons {
-    padding-right: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .bottom__section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    gap: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5rem;
 }
 
 .shipBtn {
-    background-color: #CF9117 !important;
-    width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    border-radius: 60px;
-    color: white !important;
-    font-weight: 100 !important;
+  background-color: #cf9117 !important;
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 60px;
+  color: white !important;
+  font-weight: 100 !important;
 }
 
 .bottom__btn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
 }
 
 .logout_btn {
-    color: #5732FB;
-    font-weight: 900;
-    font-size: 28px;
-    cursor: pointer;
+  color: #5732fb;
+  font-weight: 900;
+  font-size: 28px;
+  cursor: pointer;
 }
 
 .btn_log:hover {
-    background-color: white;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .search_bar {
-    background-color: rgb(248, 248, 248);
-    height: 10vh;
+  background-color: rgb(248, 248, 248);
+  height: 10vh;
+  margin-left: 1rem;
 }
 
 .right__side {
-    margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .search_menu {
-    height: 100%;
-    display: flex;
-    align-items: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
-.search_menu>input {
-    border: none;
-    outline: none;
-    background-color: rgb(248, 248, 248);
-    padding-left: 2rem;
+.search_menu > input {
+  border: none;
+  outline: none;
+  background-color: rgb(248, 248, 248);
+  padding-left: 2rem;
 }
 
-.search_menu>input::placeholder {
-    color: lightgray;
-    font-weight: 100;
-
+.search_menu > input::placeholder {
+  color: lightgray;
+  font-weight: 100;
 }
 
 .header-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .status {
-    background-color: #CF9117;
-    font-weight: 100;
-    font-size: 14px;
-    color: white;
-    padding-left: 1rem;
-    padding-right: 1rem;
+  background-color: #cf9117;
+  font-weight: 100;
+  font-size: 14px;
+  color: white;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .card-btn {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 1rem;
 }
 
 .update {
-    background-color: #CF9117;
-    width: 25px;
-    height: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    color: white;
-    cursor: pointer;
+  background-color: #cf9117;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
 }
 
 .Delete {
-    background-color: #5732FB;
-    width: 25px;
-    height: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    color: white;
-    cursor: pointer;
+  background-color: #5732fb;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
 }
 
 .text-sm {
-    font-weight: 900;
-    font-size: 10px;
+  font-weight: 900;
+  font-size: 10px;
 }
 
 .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #CF9117;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #cf9117;
 }
 
 .departure {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.dep_desc>p {
-    font-size: 12px;
-    padding-left: 1rem;
-    margin-top: -1rem;
+.dep_desc > p {
+  font-size: 12px;
+  padding-left: 1rem;
+  margin-top: -1rem;
 }
 
 .date {
-    font-weight: 900;
-    margin-top: -1rem !important;
+  font-weight: 900;
+  margin-top: -1rem !important;
 }
 
 .mapBtn {
-    /* background-color: #CF9117; */
-    color: white;
-    font-weight: 100;
-    border-radius: 60px !important;
+  /* background-color: #CF9117; */
+  color: white;
+  font-weight: 100;
+  border-radius: 60px !important;
 }
 
 .btn-map {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #CF9117;
-    border-radius: 60px;
-    padding: 0.2rem 1rem;
-    font-weight: 100;
-    color: white;
-    border: none;
-    margin-top: 1.5rem;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #cf9117;
+  border-radius: 60px;
+  padding: 0.2rem 1rem;
+  font-weight: 100;
+  color: white;
+  border: none;
+  margin-top: 1.5rem;
 }
 
 .client {
-    color: gray;
-    font-size: 10px;
+  color: gray;
+  font-size: 10px;
 }
 
 .name {
-    font-weight: 900;
-    font-size: 10px;
-    margin-top: -1rem;
+  font-weight: 900;
+  font-size: 10px;
+  margin-top: -1rem;
 }
 
 .deliver_btn {
-    background-color: #CF9117;
-    width: fit-content;
-    border: none;
-    margin-left: auto;
-    border-radius: 60px;
-    font-weight: 100;
-    font-size: 13px;
-    color: white;
+  background-color: #cf9117;
+  width: fit-content;
+  border: none;
+  margin-left: auto;
+  border-radius: 60px;
+  font-weight: 100;
+  font-size: 13px;
+  color: white;
 }
-.dash-card{
-    background-color: whitesmoke;
-    padding: 2rem;
-    width: 200px;
-    margin-bottom: 1rem;
-    border-radius: 10px;
-    transition: background-color 1s;
+.dash-card {
+  background-color: whitesmoke;
+  padding: 2rem;
+  width: 200px;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  transition: background-color 1s;
 }
-.dash-card:nth-child(2){
-    margin-left: 1rem;
-    margin-right: 1rem;
-    
+.dash-card:nth-child(2) {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
-.dash-card:hover{
-    background-color: rgb(225, 224, 224);
+.dash-card:hover {
+  background-color: rgb(225, 224, 224);
 }
 
 .workarea {
-    margin-bottom: 1rem;
-    width: 100%;
+  margin-bottom: 1rem;
+  width: 100%;
 }
-.text-warning{
-    font-weight: 900;
-    font-size: 30px;
+.text-warning {
+  font-weight: 900;
+  font-size: 30px;
+}
+.modal-side-title {
+  font-weight: 100;
+  font-size: 14px;
+}
+.outer {
+  background-color: #cf9117;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* animation: blink 6s linear infinite */
+}
+.inner {
+  background-color: white;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+    background-color: #5732fb;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
 }

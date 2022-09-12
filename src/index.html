@@ -6,17 +6,19 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSk-X8BNurE6X3KAGH5X1lWug2Ra5-M1s"></script>
-  <script async
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+   <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSk-X8BNurE6X3KAGH5X1lWug2Ra5-M1s"></script> -->
+<script async
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSk-X8BNurE6X3KAGH5X1lWug2Ra5-M1s&libraries=places&callback=initMap">
 </script>
-
-   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 </head>
 <body>
   <app-root></app-root>
 
-
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>

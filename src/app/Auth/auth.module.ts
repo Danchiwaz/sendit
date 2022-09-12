@@ -6,12 +6,24 @@ import { NavComponent } from '../Shared/componets/nav.component';
 import { SharedModule } from '../Shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './AuthStore/reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './AuthStore/effects';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
 @NgModule({
   declarations: [LoginComponent, SigninComponent],
-  imports: [CommonModule,ReactiveFormsModule, SharedModule, FormsModule,  ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    SharedModule,
+    FormsModule,
+    StoreModule.forFeature('users', authReducer),
+    EffectsModule.forFeature([AuthEffects]),
+  ],
   exports: [LoginComponent, SigninComponent],
 })
 export class AuthModule {}

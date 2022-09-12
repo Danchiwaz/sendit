@@ -1,8 +1,8 @@
-export interface IUser {
-  user_id: string;
+export interface UserRegister {
+  id?: number;
   fullname: string;
   username: string;
   email: string;
-  location: string;
   password: string;
+  confirm_password?: string;
 }

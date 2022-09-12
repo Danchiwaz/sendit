@@ -2,81 +2,34 @@
   "parcels": [
     {
       "id": 1,
-      "sender": "two",
+      "sender": "mainadanie",
       "receiver": "three",
-      "weight": "12",
-      "price": 300443,
-      "from": "Nyeri",
-      "to": "Nakuru",
-      "pick_date": "2022-09-28",
+      "weight": "12456",
+      "price": 12006,
+      "from": {
+        "address": "Nakuru, Kenya",
+        "latitude": -0.3030988,
+        "longitude": 36.080026
+      },
+      "to": {
+        "address": "08180 Moià, Barcelona, Spain",
+        "latitude": 41.8099481,
+        "longitude": 2.0971693
+      },
+      "pick_date": "2022-09-27",
       "deliver_date": "2022-09-28",
-      "tracking_no": "QWDR234j"
+      "tracking_no": "12VCHFGK"
     },
     {
       "id": 2,
-      "sender": "mainadanie",
-      "receiver": "mainadaniel",
-      "weight": "23",
-      "price": 454,
-      "from": "Nyeri",
-      "to": "Nanyuki",
-      "pick_date": "2022-09-29",
-      "deliver_date": "2022-09-28",
-      "tracking_no": "DGHFHHJ"
-    },
-    {
       "sender": "three",
       "receiver": "two",
-      "weight": "43",
-      "price": 1230,
-      "from": [],
-      "to": "Karatina",
-      "pick_date": "2022-09-24",
-      "deliver_date": "2022-09-26",
-      "tracking_no": "123GHTDJ",
-      "id": 3
-    },
-    {
-      "id": 4,
-      "sender": "mainadanie",
-      "receiver": "three",
-      "weight": "12",
-      "price": 1200,
-      "from": "Nyeri",
-      "to": "Karatina",
-      "pick_date": "2022-09-29",
-      "deliver_date": "2022-09-29",
-      "tracking_no": "QWD234HGN"
-    },
-    {
-      "sender": "three",
-      "receiver": "mainadaniel",
-      "weight": "tyftyf",
-      "price": 1233,
+      "weight": "45",
+      "price": 455,
       "from": {
-        "address": "320 West 57th Street, Ground Floor, New York, NY 10019, USA",
-        "latitude": 40.7669722,
-        "longitude": -73.9839611
-      },
-      "to": {
-        "address": "320 West 57th Street, Ground Floor, New York, NY 10019, USA",
-        "latitude": 40.7669722,
-        "longitude": -73.9839611
-      },
-      "pick_date": "2022-09-22",
-      "deliver_date": "2022-09-27",
-      "tracking_no": "frdgt65",
-      "id": 5
-    },
-    {
-      "sender": "two",
-      "receiver": "three",
-      "weight": "123",
-      "price": 123456,
-      "from": {
-        "address": "",
-        "latitude": "",
-        "longitude": ""
+        "address": "Machakos, Kenya",
+        "latitude": -1.5176837,
+        "longitude": 37.2634146
       },
       "to": {
         "address": "",
@@ -84,9 +37,69 @@
         "longitude": ""
       },
       "pick_date": "2022-09-30",
-      "deliver_date": "2022-09-30",
-      "tracking_no": "FDRGTH",
-      "id": 6
+      "deliver_date": "2022-09-26",
+      "tracking_no": "Danie1234"
+    },
+    {
+      "sender": "three",
+      "receiver": "two",
+      "weight": "45",
+      "price": 455,
+      "from": {
+        "address": "301 Upper Thomson Rd, Singapore 574408",
+        "latitude": 1.3548,
+        "longitude": 103.8308
+      },
+      "to": {
+        "address": "63 River Road, Nairobi, Kenya",
+        "latitude": -1.2819734,
+        "longitude": 36.8267662
+      },
+      "pick_date": "2022-09-30",
+      "deliver_date": "2022-09-26",
+      "tracking_no": "123dfref",
+      "id": 3
+    },
+    {
+      "sender": "two",
+      "receiver": "three",
+      "weight": "12",
+      "price": 1200,
+      "from": {
+        "address": "Nakuru, Kenya",
+        "latitude": -0.3030988,
+        "longitude": 36.080026
+      },
+      "to": {
+        "address": "Nyeri, Kenya",
+        "latitude": -0.437099,
+        "longitude": 36.9580104
+      },
+      "pick_date": "",
+      "deliver_date": "",
+      "tracking_no": "QDGFHR",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "sender": "three",
+      "receiver": "two",
+      "weight": "1234",
+      "price": 1200,
+      "from": {
+        "address": "Canada",
+        "latitude": 56.130366,
+        "longitude": -106.346771
+      },
+      "to": {
+        "address": "United States",
+        "latitude": 37.09024,
+        "longitude": -95.712891
+      },
+      "pick_date": "2022-09-23",
+      "deliver_date": "2022-09-22",
+      "tracking_no": "12FGTJFKADHF"
     }
-  ]
+  ],
+  "register": []
 }

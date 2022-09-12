@@ -48,20 +48,14 @@
           <div class="form-group">
             <label for="">From:</label>
              <input class="form-control" formControlName="from" ngx-google-places-autocomplete (onAddressChange)="handleAddressChange($event)" />
-             <input class="form-control" formControlName="fromLat" hidden [value]="userLatitude"  />
-             <input class="form-control" formControlName="fromLong" hidden [value]="userLongitude"  />
-            <!-- <select formControlName="from" class="form-select" aria-label="Default select example">
-              <option value="Nyeri">Nyeri</option>
-              <option value="Nairobi">Nairobi</option>
-              <option value="Momabasa">Mombasa</option>
-            </select> -->
+      
              <small class="text-muted" *ngIf="createParcelForm.get('from')?.invalid && createParcelForm.get('from')?.touched">Required</small>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="">To:</label>
-             <input class="form-control" formControlName="from" ngx-google-places-autocomplete (onAddressChange)="handleAddressChange1($event)" /> <!-- <input class="form-control" formControlName="to" ngx-google-places-autocomplete (onAddressChange)="handleAddressChange1($event)" /> -->
+             <input class="form-control" formControlName="to" ngx-google-places-autocomplete (onAddressChange)="handleAddressChange1($event)" /> <!-- <input class="form-control" formControlName="to" ngx-google-places-autocomplete (onAddressChange)="handleAddressChange1($event)" /> -->
             <small class="text-muted" *ngIf="createParcelForm.get('to')?.invalid && createParcelForm.get('to')?.touched">Required</small>
           </div>
         </div>

@@ -17,42 +17,75 @@ import { IParcel } from '../../interfaces/createParceinterface';
 })
 export class EditComponent implements OnInit {
   createParcelForm: FormGroup;
-  constructor(private store:Store,private appStore:Store<AppState>, private route: ActivatedRoute ,private fb:FormBuilder, private router:Router) {}
+  userAddress: string = '';
+  userLatitude: string = '';
+  userLongitude: string = '';
+  userAddress1: string = '';
+  userLatitude1: string = '';
+  userLongitude1: string = '';
+  constructor(
+    private store: Store,
+    private appStore: Store<AppState>,
+    private route: ActivatedRoute,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
+
+  handleAddressChange(address: any) {
+    this.userAddress = address.formatted_address;
+    this.userLatitude = address.geometry.location.lat();
+    this.userLongitude = address.geometry.location.lng();
+  }
+  handleAddressChange1(address: any) {
+    this.userAddress1 = address.formatted_address;
+    this.userLatitude1 = address.geometry.location.lat();
+    this.userLongitude1 = address.geometry.location.lng();
+  }
 
   ngOnInit(): void {
     let fetchFormData$ = this.route.paramMap.pipe(
-      switchMap((param) =>{
-        let id = Number(param.get('id'))
+      switchMap((param) => {
+        let id = Number(param.get('id'));
         return this.store.pipe(select(selectParcelById(id)));
       })
-    )
-   fetchFormData$.subscribe((data) =>{
-    if(data){
-       this.createParcelForm = this.fb.group({
-         id: [data.id],
-         sender: [data.sender, [Validators.required]],
-         receiver: [data.receiver, [Validators.required]],
-         weight: [data.weight, [Validators.required]],
-         price: [data.price, [Validators.required]],
-         from: [data.from, [Validators.required]],
-         to: [data.to, [Validators.required]],
-         pick_date: [data.pick_date, [Validators.required]],
-         deliver_date: [data.deliver_date, [Validators.required]],
-         tracking_no: [data.tracking_no, [Validators.required]],
-       });
-    }
-    else{
-      this.router.navigate(['/dashboard']);
-    }
-   })
+    );
 
-    
+    fetchFormData$.subscribe((data) => {
+      if (data) {
+        this.createParcelForm = this.fb.group({
+          id: [data.id],
+          sender: [data.sender, [Validators.required]],
+          receiver: [data.receiver, [Validators.required]],
+          weight: [data.weight, [Validators.required]],
+          price: [data.price, [Validators.required]],
+          from: [data.from.address, [Validators.required]],
+          to: [data.to.address, [Validators.required]],
+          pick_date: [data.pick_date, [Validators.required]],
+          deliver_date: [data.deliver_date, [Validators.required]],
+          tracking_no: [data.tracking_no, [Validators.required]],
+        });
+      } else {
+        this.router.navigate(['/admin']);
+      }
+    });
   }
   Update() {
-    let parcelForm:IParcel = this.createParcelForm.value;
-    console.log(parcelForm);
+    const parcelForm = {
+      ...this.createParcelForm.value,
+      to: {
+        address: this.userAddress1,
+        latitude: this.userLatitude1,
+        longitude: this.userLongitude1,
+      },
+      from: {
+        address: this.userAddress,
+        latitude: this.userLatitude,
+        longitude: this.userLongitude,
+      },
+    };
     
-    this.store.dispatch(invokeParcelUpdateApi({ payload: {... parcelForm} }));
+
+    this.store.dispatch(invokeParcelUpdateApi({ payload: { ...parcelForm } }));
 
     let appStatus$ = this.store.pipe(select(selectAppState));
     appStatus$.subscribe((data) => {
@@ -60,7 +93,7 @@ export class EditComponent implements OnInit {
         this.appStore.dispatch(
           setApiStatus({ apiStatus: { apiStatus: '', apiResponseMessage: '' } })
         );
-        this.router.navigate(['/admin/dashboard']);
+        this.router.navigate(['/admin']);
       }
     });
   }

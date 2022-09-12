@@ -64,9 +64,9 @@ export class CreateComponent implements OnInit {
         longitude: this.userLongitude,
       },
       from: {
-        address: this.userAddress,
-        latitude: this.userLatitude,
-        longitude: this.userLongitude,
+        address: this.userAddress1,
+        latitude: this.userLatitude1,
+        longitude: this.userLongitude1,
       },
     };
     this.parcel = p;
@@ -78,7 +78,7 @@ export class CreateComponent implements OnInit {
         this.appState.dispatch(
           setApiStatus({ apiStatus: { apiStatus: '', apiResponseMessage: '' } })
         );
-        this.router.navigate(['/admin/dashboard']);
+        this.router.navigate(['/admin']);
       }
     });
   }

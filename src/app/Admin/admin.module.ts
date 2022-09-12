@@ -16,6 +16,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ParcelFilterPipe } from './pipes/parcel-filter.pipe';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { ShippmentsComponent } from './components/shippments/shippments.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
     ClientComponent,
     EditComponent,
     ParcelFilterPipe,
+    ShippmentsComponent,
   ],
   imports: [
     CommonModule,
@@ -36,12 +38,13 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
         component: AdminComponent,
         children: [
           {
-            path: 'dashboard',
+            path: '',
             component: DashboardComponent,
           },
           { path: 'create', component: CreateComponent },
           { path: 'client', component: ClientComponent },
           { path: 'edit/:id', component: EditComponent },
+          {path:'shipped', component: ShippmentsComponent}
         ],
       },
     ]),

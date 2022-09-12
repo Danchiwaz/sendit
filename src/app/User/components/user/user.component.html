@@ -1,12 +1,16 @@
-<div class="container">
+<div class="container-fluid bg-user">
   <div class="row">
     <!-- sidebar  -->
     <div class="col-md-2 pl-2 pr-2 sidebar">
-      <div class="row 2t-2">
-        <h5 class="nav-text">
+       <div class="sendit-logo">
+        <div col-md-6>
+          <h6 class="nav-text">
           <span class="se">Se</span> <span class="" nd>Nd</span>
           <span class="i">i</span><span class=".snd">t</span>
-        </h5>
+        </h6>
+        </div>
+        
+        <div  class="hambuger"><i (click)="navdisplay()" class="fa-solid fa-bars"></i></div>
       </div>
       <div class="row">
         <small class="text-muted">User Workspace</small>
@@ -32,6 +36,11 @@
             ></span>
             Sent
           </button>
+          <button [routerLink]="['/user/request']" class="btn bg-white text-warning">
+            <span class="text-muted icons"
+              ><i class="fa-solid fa-envelope"></i></span>
+            Make Request
+          </button>
           
         </div>
         <div class="bottom">
@@ -53,7 +62,7 @@
     </div>
     <!-- end of sidebar  -->
     <div class="col-md-10 ml-2 right__side">
-      <div class="row">
+      <div class="row search-custom">
         <div class="search_bar">
           <div class="search_menu">
             <i class="fa-solid fa-magnifying-glass"></i
@@ -61,8 +70,41 @@
           </div>
         </div>
       </div>
-      <div class="row mt-3">
-         <router-outlet></router-outlet>
+
+
+
+     
+          
+
+
+
+      <div class="row mt-3 " style="margin-left: 1rem;">
+        <div class="container ">
+          <div class="row gap-1">
+            <div class="col-md-4 card shadow" style="margin-bottom: 1rem;">
+              <canvas id="myChart" height="50" width="100"></canvas>
+            </div>
+            
+            <div class="col-md-4 card shadow" style=" margin-bottom: 1rem;">
+              <canvas id="mydonurght" height="50" width="100"></canvas>
+            </div>
+              <div class="col-md-2">
+              <div class="outer">
+                <div class="inner">
+                  <div class=""><p>Thank you</p></div>
+                  <div><small>Daniel</small></div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col-md-4 card shadow" style="margin-left: 1rem; margin-bottom: 1rem;"> 
+    <canvas id="mypolar" height="50" width="100"></canvas>
+  </div> -->
+          </div>
+        </div>
+        <div class="container container-custom">
+          <router-outlet></router-outlet>
+        </div>
+         
          
       </div>
     </div>

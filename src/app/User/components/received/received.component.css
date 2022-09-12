@@ -17,3 +17,11 @@ tr {
     color: white;
     border-radius: 60px;
 }
+.table-design {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-left: -1rem;
+    margin-right: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}

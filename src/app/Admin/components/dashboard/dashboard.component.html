@@ -1,4 +1,4 @@
-<div class="row workarea">
+<div class="row workarea ">
         <div class="search_bar">
           <div class="search_menu" >
             <i class="fa-solid fa-magnifying-glass"></i
@@ -31,13 +31,22 @@
   </div>
 </div> -->
      <div class="container">
-          <div class="row">
-            <div class="col-md-5 card shadow" style="margin-bottom: 1rem;">
+          <div class="row gap-1">
+            <div class="col-md-4 card shadow" style="margin-bottom: 1rem;">
               <canvas id="myChart" height="50" width="100"></canvas>
             </div>
-            <div class="col-md-6 card shadow" style="margin-left: 1rem; margin-bottom: 1rem;">
+            <div class="col-md-4 card shadow" style="margin-bottom: 1rem;">
               <canvas id="mydonurght" height="50" width="100"></canvas>
             </div>
+            <div class="col-md-2">
+              <div class="outer">
+                <div class="inner">
+                  <div class=""><p>Time Worked</p></div>
+                  <div><small>120Hrs</small></div>
+                </div>
+              </div>
+            </div>
+            
             <!-- <div class="col-md-4 card shadow" style="margin-left: 1rem; margin-bottom: 1rem;"> 
     <canvas id="mypolar" height="50" width="100"></canvas>
   </div> -->
@@ -90,10 +99,10 @@
           <!-- modal  -->
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Location</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">{{ parcel.from.address | slice:0:10 }} - {{ parcel.to.address | slice:0:10 }}</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -104,9 +113,23 @@
                     </map-marker>
 
                   </google-map>
-                  <div class="row">
+                  <div class="row mb-2">
                     <div class="col-md-3">
-                      <p>Tracking No: <small class="text-warning">{{ parcel.tracking_no }}</small></p>
+                      <p >Tracking No: <small class="modal-side-title">{{ parcel.tracking_no }}</small></p>
+                    </div>
+                    <div class="col-md-3">
+                      <p >weight: <small class="modal-side-title">{{ parcel.weight }}</small></p>
+                    </div>
+                    <div class="col-md-3">
+                      <p >Cost: <small class="modal-side-title">{{ parcel.price }}</small></p>
+                    </div>
+                    <div class="col-md-3">
+                      <p >Receiver: <small class="modal-side-title">{{ parcel.receiver }}</small></p>
+                      
+                    </div>
+                    <div class="col-md-3">
+                      <p >Sender: <small class="modal-side-title">{{ parcel.sender }}</small></p>
+
                     </div>
                   </div>
 

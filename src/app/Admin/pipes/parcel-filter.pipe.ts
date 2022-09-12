@@ -12,7 +12,7 @@ export class ParcelFilterPipe implements PipeTransform {
     }
     const parcels: IParcel[] = [];
     for (let parcel of value) {
-      if (parcel.tracking_no.toString().indexOf(Tracking) != -1) {
+      if (parcel.sender.toString().indexOf(Tracking) != -1) {
         parcels.push(parcel);
       }
     }

@@ -22,7 +22,7 @@
         </div>
 
 <div class="table-responsive">
-
+   
   <table class="table table-hover">
   <thead style="background-color: #cf9117; color:white">
     <tr>
@@ -30,40 +30,24 @@
       <th scope="col">FullName</th>
       <th scope="col">username</th>
       <th scope="col">email</th>
-      <th scope="col">Location</th>
       <th scope="col">Status</th>
       <th scope="col">Remove User</th>
     </tr>
   </thead>
+  <P class="loader" *ngIf="isLoading"><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i></P>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Daniel Maina</td>
-      <td>Danchiwaz</td>
-      <td>maina@gmail.com</td>
-     
-      <td>Nyeri</td>
-       <td><button class="btn btn-sm btn-warning">Active</button></td>
+    <tr *ngFor="let client of clients; let i = index">
+      <th scope="row">{{ i +1 }}</th>
+      <td>{{ client.fullname }}</td>
+      <td>{{ client.username }}</td>
+      <td>{{ client.email }}</td>
+       <td><button class="btn btn-sm btn-warning">
+        <span *ngIf="client.isdeleted == 'no'">Active</span>
+        <span *ngIf="client.isdeleted == 'yes'">Not Active</span>
+       </button></td>
        <td class="text-center"><button class="btn btn-sm"><i class="fa-solid text-warning fa-trash"></i></button></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Daniel Maina</td>
-      <td>Danchiwaz</td>
-      <td>maina@gmail.com</td>
-      <td>Nyeri</td>
-      <td><button class="btn btn-sm btn-warning">Active</button></td>
-      <td class="text-center"><button class="btn btn-sm"><i class="fa-solid text-warning fa-trash"></i></button></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Daniel Maina</td>
-      <td>Danchiwaz</td>
-      <td>maina@gmail.com</td>
-      <td>Nyeri</td>
-      <td><button class="btn btn-sm btn-warning">Active</button></td>
-       <td class="text-center"><button class="btn btn-sm"><i class="fa-solid text-warning fa-trash"></i></button></td>
-    </tr>
+   
   </tbody>
 </table>
 </div>

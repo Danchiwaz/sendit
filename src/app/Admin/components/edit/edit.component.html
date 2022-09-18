@@ -7,9 +7,9 @@
             <label for="">Sender:</label>
             <select formControlName="sender" #sender class="form-select" aria-label="Default select example">
               <option selected>Select user</option>
-              <option value="mainadanie">mainadnaniel@gmail.com</option>
-              <option value="two">Two</option>
-              <option value="three">Three</option>
+              <option value="mainadaniel">mainadnaniel@gmail.com</option>
+              <option value="Danchiwaz">Danchiwaz</option>
+              <option value="Robert">Robert</option>
             </select>
             <small class="text-muted" *ngIf="createParcelForm.get('sender')?.invalid && createParcelForm.get('sender')?.touched">Sender required</small>
           </div>
@@ -20,8 +20,8 @@
             <select formControlName="receiver" class="form-select" aria-label="Default select example">
               <option selected>Select user</option>
               <option value="mainadaniel">mainadnaniel@gmail.com</option>
-              <option value="two">Two</option>
-              <option value="three">Three</option>
+              <option value="Danchiwaz">Danchiwaz</option>
+              <option value="Robert">Robert</option>
             </select>
              <small class="text-muted" *ngIf="createParcelForm.get('receiver')?.invalid && createParcelForm.get('receiver')?.touched">Receiver required</small>
           </div>
@@ -47,16 +47,16 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="">From:</label>
-             <input class="form-control" formControlName="from" ngx-google-places-autocomplete (onAddressChange)="handleAddressChange($event)" />
+             <input class="form-control" formControlName="fromlocation" ngx-google-places-autocomplete (onAddressChange)="handleAddressChange($event)" />
       
-             <small class="text-muted" *ngIf="createParcelForm.get('from')?.invalid && createParcelForm.get('from')?.touched">Required</small>
+             <small class="text-muted" *ngIf="createParcelForm.get('fromlocation')?.invalid && createParcelForm.get('fromlocation')?.touched">Required</small>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="">To:</label>
-             <input class="form-control" formControlName="to" ngx-google-places-autocomplete (onAddressChange)="handleAddressChange1($event)" /> <!-- <input class="form-control" formControlName="to" ngx-google-places-autocomplete (onAddressChange)="handleAddressChange1($event)" /> -->
-            <small class="text-muted" *ngIf="createParcelForm.get('to')?.invalid && createParcelForm.get('to')?.touched">Required</small>
+             <input class="form-control" formControlName="tolocation" ngx-google-places-autocomplete (onAddressChange)="handleAddressChange1($event)" /> <!-- <input class="form-control" formControlName="to" ngx-google-places-autocomplete (onAddressChange)="handleAddressChange1($event)" /> -->
+            <small class="text-muted" *ngIf="createParcelForm.get('tolocation')?.invalid && createParcelForm.get('tolocation')?.touched">Required</small>
           </div>
         </div>
       </div>
@@ -64,15 +64,15 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="">Picked Date:</label>
-            <input formControlName="pick_date" type="date" placeholder="weight in Kgs" class="form-control">
-            <small class="text-muted" *ngIf="createParcelForm.get('pick_date')?.invalid && createParcelForm.get('pick_date')?.touched">Required</small>
+            <input formControlName="pickdate" type="date" placeholder="weight in Kgs" class="form-control">
+            <small class="text-muted" *ngIf="createParcelForm.get('pickdate')?.invalid && createParcelForm.get('pickdate')?.touched">Required</small>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="">Delivered Date:</label>
-            <input formControlName="deliver_date" type="date" placeholder="weight in Kgs" class="form-control">
-             <small class="text-muted" *ngIf="createParcelForm.get('deliver_date')?.invalid && createParcelForm.get('deliver_date')?.touched">Required</small>
+            <input formControlName="arrivaldate" type="date" placeholder="weight in Kgs" class="form-control">
+             <small class="text-muted" *ngIf="createParcelForm.get('arrivaldate')?.invalid && createParcelForm.get('arrivaldate')?.touched">Required</small>
           </div>
         </div>
       </div>
@@ -80,8 +80,8 @@
           <div class="col-md-12">
           <div class="form-group">
             <label for="">Tracking Number:</label>
-            <input formControlName="tracking_no" type="" placeholder="example...XHT23JG" class="form-control">
-             <small class="text-muted" *ngIf="createParcelForm.get('tracking_no')?.invalid && createParcelForm.get('tracking_no')?.touched">Required</small>
+            <input formControlName="trackingno" type="" placeholder="example...XHT23JG" class="form-control">
+             <small class="text-muted" *ngIf="createParcelForm.get('trackingno')?.invalid && createParcelForm.get('trackingno')?.touched">Required</small>
           </div>
         </div>
       </div>

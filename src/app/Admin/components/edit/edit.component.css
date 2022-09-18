@@ -31,3 +31,6 @@ input::placeholder {
 .disabled {
     opacity: 0.5;
 }
+.show{
+    display: block;
+}

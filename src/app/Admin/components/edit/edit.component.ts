@@ -45,10 +45,11 @@ export class EditComponent implements OnInit {
   ngOnInit(): void {
     let fetchFormData$ = this.route.paramMap.pipe(
       switchMap((param) => {
-        let id = Number(param.get('id'));
+        let id = param.get('id') as string;
         return this.store.pipe(select(selectParcelById(id)));
       })
     );
+    
 
     fetchFormData$.subscribe((data) => {
       if (data) {
@@ -58,11 +59,11 @@ export class EditComponent implements OnInit {
           receiver: [data.receiver, [Validators.required]],
           weight: [data.weight, [Validators.required]],
           price: [data.price, [Validators.required]],
-          from: [data.from.address, [Validators.required]],
-          to: [data.to.address, [Validators.required]],
-          pick_date: [data.pick_date, [Validators.required]],
-          deliver_date: [data.deliver_date, [Validators.required]],
-          tracking_no: [data.tracking_no, [Validators.required]],
+          fromlocation: [data.fromlocation.address, [Validators.required]],
+          tolocation: [data.tolocation.address, [Validators.required]],
+          pickdate: [data.pickdate, [Validators.required]],
+          arrivaldate: [data.arrivaldate, [Validators.required]],
+          trackingno: [data.trackingno, [Validators.required]],
         });
       } else {
         this.router.navigate(['/admin']);

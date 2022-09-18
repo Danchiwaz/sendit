@@ -1,8 +1,8 @@
 import { createReducer, on } from "@ngrx/store";
-import { IParcel } from "../interfaces/createParceinterface";
+import { IParcel1 } from "../interfaces/createParceinterface";
 import { invokeCreateParcelApi, invokeCreateParcelSuccess, invokeParcelApiSuccess, invokeParcelUpdateApiSuccess } from "./actions";
 
-export const initialState: ReadonlyArray<IParcel> =[];
+export const initialState: ReadonlyArray<IParcel1> =[];
 
 export const AdminReducer = createReducer(
   initialState,

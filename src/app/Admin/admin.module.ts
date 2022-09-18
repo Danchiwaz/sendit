@@ -6,7 +6,7 @@ import { CreateComponent } from './components/create/create.component';
 import { RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
-import { ClientComponent } from './client/client.component';
+import { ClientComponent } from './components/client/client.component';
 import { StoreModule } from '@ngrx/store';
 import { AdminReducer } from './adminStore/reducers';
 import { EffectsModule } from '@ngrx/effects';

@@ -6,30 +6,7 @@
           </div>
         </div>
       </div>
-<!-- <div class="row g-1">
-  <div class="col-md-5 col-sm-12 dash-card">
-    <div class="d-flex gap-3 align-content-center justify-content-center">
-      <p class="text-warning"><i class="fa-solid fa-car"></i></p>
-      <p>Deliveries</p>
-      <h4>12</h4>
-    </div>
 
-  </div>
-  <div class="col-md-5 col-sm-12 dash-card">
-    <div class="d-flex gap-3 align-content-center justify-content-center">
-      <p class="text-warning"><i class="fa-solid fa-globe"></i></p>
-      <p>Clients</p>
-      <h4>26</h4>
-    </div>
-  </div>
-  <div class="col-md-4 col-sm-12 dash-card">
-    <div class="d-flex gap-3 align-content-center justify-content-center">
-      <p class="text-warning"><i class="fa-solid fa-group-arrows-rotate"></i></p>
-      <p>Countries</p>
-      <h4>1200</h4>
-    </div>
-  </div>
-</div> -->
      <div class="container">
           <div class="row gap-1">
             <div class="col-md-4 card shadow" style="margin-bottom: 1rem;">
@@ -47,19 +24,19 @@
               </div>
             </div>
             
-            <!-- <div class="col-md-4 card shadow" style="margin-left: 1rem; margin-bottom: 1rem;"> 
-    <canvas id="mypolar" height="50" width="100"></canvas>
-  </div> -->
+  
           </div>
         </div>
 <div class="row">
   <!-- loop -->
+  <P class="loader" *ngIf="isLoading"><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i></P>
   <ng-container *ngIf="parcels$ | async as parcels">
-
-  <div class="col-md-6 col-sm-12" *ngFor="let parcel of parcels | parcelFilter:filter | paginate: { itemsPerPage: 2, currentPage: p } ">
+  <div class="col-md-6 col-sm-12" *ngFor="let parcel of parcels | parcelFilter:filter | paginate: { itemsPerPage: 2, currentPage: p };let i = index ">
     <div class="card mb-2">
       <div class="card-header header-card">
-        <div class="status">On Delivery</div>
+        <div class="status">
+          <span>{{ parcel.status }}</span>
+        </div>
         <div class="card-btn">
           <div class="update" [routerLink]="['/admin/edit', parcel.id]"><i class="fa-solid fa-pen-nib"></i></div>
           <div class="Delete"><i class="fa-solid fa-trash"></i></div>
@@ -69,11 +46,11 @@
         <div class="row">
           <div class="col-md-6">
             <small class="text-muted">Tracking No:</small>
-            <p class="text-sm">{{ parcel.tracking_no }}</p>
+            <p class="text-sm">{{ parcel.trackingno }}</p>
           </div>
           <div class="col-md-6 text-end">
             <small class="text-muted">Destination</small>
-            <p class="text-sm">{{ parcel.from.address | slice:0:6 }} - {{ parcel.to.address | slice:0:6 }}</p>
+            <p class="text-sm">{{ parcel.fromlocation.address | slice:0:6 }} - {{ parcel.tolocation.address | slice:0:6 }}</p>
           </div>
         </div>
         <div class="row">
@@ -82,56 +59,73 @@
               <div class="dot"></div>
               <div class="dep_desc">
                 <p class="dep">Departure Date</p>
-                <p class="date">{{ parcel.pick_date }}</p>
+                <p class="date">{{ parcel.pickdate }}</p>
               </div>
             </div>
             <div class="departure">
               <div class="dot"></div>
               <div class="dep_desc">
                 <p class="dep">Arrival Date</p>
-                <p class="date">{{ parcel.deliver_date }}</p>
+                <p class="date">{{ parcel.arrivaldate }}</p>
               </div>
             </div>
           </div>
           <div class="col-md-6 col-sm-12">
-            <button class="btn-map" data-bs-toggle="modal" data-bs-target="#exampleModal">Show Map</button>
+            <button class="btn-map" [attr.id]="'triggerModalbutton-' + i" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal-' + i">Show Map</button>
           </div>
           <!-- modal  -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+          <div class="modal fade"  [attr.id]="'exampleModal-' + i" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">{{ parcel.from.address | slice:0:10 }} - {{ parcel.to.address | slice:0:10 }}</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">{{ parcel.fromlocation.address | slice:0:10 }} - {{ parcel.tolocation.address | slice:0:10 }}</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <google-map height="400px" width="750px" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)"
+                  <div class="google">
+                    <google-map  height="400px" width="720px" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)"
                     (mapMousemove)="move($event)">
                     <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
                       [options]="markerOptions">
                     </map-marker>
 
                   </google-map>
-                  <div class="row mb-2">
-                    <div class="col-md-3">
-                      <p >Tracking No: <small class="modal-side-title">{{ parcel.tracking_no }}</small></p>
+                  </div>
+                 
+                  <div class="card custom-card_design">
+                    <div class="row">
+                     <div class="col-md-6">
+                      <h6 >Tracking No:</h6>
+                      <small>{{ parcel.trackingno }}</small>
                     </div>
-                    <div class="col-md-3">
-                      <p >weight: <small class="modal-side-title">{{ parcel.weight }}</small></p>
+                     <div class="col-md-6">
+                      <h6 >Sender:</h6>
+                      <small>{{ parcel.sender }}</small>
                     </div>
-                    <div class="col-md-3">
-                      <p >Cost: <small class="modal-side-title">{{ parcel.price }}</small></p>
+                     <div class="col-md-6">
+                      <h6 >Receiver:</h6>
+                      <small>{{ parcel.receiver }}</small>
                     </div>
-                    <div class="col-md-3">
-                      <p >Receiver: <small class="modal-side-title">{{ parcel.receiver }}</small></p>
-                      
+                     <div class="col-md-6">
+                      <h6 >Weight:</h6>
+                      <small>{{ parcel.weight }}</small>
                     </div>
-                    <div class="col-md-3">
-                      <p >Sender: <small class="modal-side-title">{{ parcel.sender }}</small></p>
-
+                     <div class="col-md-6">
+                      <h6 >Departure Date:</h6>
+                      <small>{{ parcel.pickdate }}</small>
+                    </div>
+                     <div class="col-md-6">
+                      <h6 >Departure Date:</h6>
+                      <small>{{ parcel.arrivaldate }}</small>
+                    </div>
+                     <div class="col-md-6">
+                      <h6 >Price:</h6>
+                      <small>{{ parcel.price }}</small>
+                    </div>
                     </div>
                   </div>
+                 
 
                 </div>
 
@@ -168,4 +162,7 @@
 
 
 </div>
+<ng-container *ngIf="!isLoading">
 <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</ng-container>
+

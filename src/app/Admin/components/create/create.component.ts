@@ -7,7 +7,7 @@ import { setApiStatus } from 'src/app/sharedAppStatus/store/app.action';
 import { selectAppState } from 'src/app/sharedAppStatus/store/app.selector';
 import { invokeCreateParcelApi } from '../../adminStore/actions';
 import { selectParcels } from '../../adminStore/selectors';
-import { IParcel } from '../../interfaces/createParceinterface';
+import { IParcel, IParcel1 } from '../../interfaces/createParceinterface';
 
 @Component({
   selector: 'app-create',
@@ -38,32 +38,36 @@ export class CreateComponent implements OnInit {
     this.userLongitude1 = address.geometry.location.lng();
   }
   createParcelForm: FormGroup;
-  parcel: IParcel;
+  parcel: IParcel1;
   ngOnInit(): void {
     this.createParcelForm = this.fb.group({
       sender: ['', [Validators.required]],
       receiver: ['', [Validators.required]],
       weight: ['', [Validators.required]],
       price: ['', [Validators.required]],
-      from: ['', [Validators.required]],
-      to: ['', [Validators.required]],
-      pick_date: ['', [Validators.required]],
-      deliver_date: ['', [Validators.required]],
-      tracking_no: ['', [Validators.required]],
+      fromlocation: ['', [Validators.required]],
+      tolocation: ['', [Validators.required]],
+      pickdate: ['', [Validators.required]],
+      arrivaldate: ['', [Validators.required]],
+      trackingno: ['', [Validators.required]],
     });
     console.log(this.createParcelForm.value);
+  }
+
+  reload(){
+    this.store.pipe(select(selectParcels));
   }
 
   // create parcel
   createParcel() {
     const p = {
       ...this.createParcelForm.value,
-      to: {
+      tolocation: {
         address: this.userAddress,
         latitude: this.userLatitude,
         longitude: this.userLongitude,
       },
-      from: {
+      fromlocation: {
         address: this.userAddress1,
         latitude: this.userLatitude1,
         longitude: this.userLongitude1,
@@ -78,7 +82,7 @@ export class CreateComponent implements OnInit {
         this.appState.dispatch(
           setApiStatus({ apiStatus: { apiStatus: '', apiResponseMessage: '' } })
         );
-        this.router.navigate(['/admin']);
+        window.location.reload();
       }
     });
   }

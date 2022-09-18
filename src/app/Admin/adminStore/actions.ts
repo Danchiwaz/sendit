@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { IParcel } from "../interfaces/createParceinterface";
+import { IClient, IParcel1 } from "../interfaces/createParceinterface";
 
 
 export const invokeParcelsApi= createAction(
@@ -8,24 +8,43 @@ export const invokeParcelsApi= createAction(
 
 export const invokeParcelApiSuccess = createAction(
   '[Admin module] invoke Parcels fetch Success',
-  props<{ allParcels: IParcel[] }>()
+  props<{ allParcels: IParcel1[] }>()
 );
 
 export const invokeCreateParcelApi = createAction(
   "[Admin module] invoke create parcel api",
-  props<{payload: IParcel}>()
+  props<{payload: IParcel1}>()
 )
 
 export const invokeCreateParcelSuccess = createAction(
   "[Admin module] invoke create parcel success",
-  props<{response: IParcel}>()
+  props<{response: IParcel1}>()
 )
 
 export const invokeParcelUpdateApi = createAction(
   '[Admin module] invoke update parcel Api',
-  props<{payload: IParcel}>()
+  props<{payload: IParcel1}>()
 );
 export const invokeParcelUpdateApiSuccess = createAction(
   '[Admin module]  update parcel Api success',
-  props<{ response: IParcel }>()
+  props<{ response: IParcel1 }>()
 );
+
+export const invokeGetAllClientsAPI = createAction(
+  '[Admin module] get all clients'
+)
+
+export const invokeGetAllClientsAPISuccess = createAction(
+  '[Admin module] get all clients success',
+  props<{response: IClient[]}>
+)
+
+
+export const invokeDeleteParcelApi = createAction(
+  '[Admin module] delete parcel api',
+  props<{id:string}>
+)
+export const invokeDeleteParcelApiSuccess = createAction(
+  '[Admin module] delete parcel api Success',
+  props<{id:string}>
+)

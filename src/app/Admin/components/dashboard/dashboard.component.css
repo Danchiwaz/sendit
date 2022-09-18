@@ -261,6 +261,24 @@
   justify-content: center;
   flex-direction: column;
 }
+.custom-card_design{
+  border-radius: 10px;
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+}
+.custom-card_design h6{
+  color: #cf9117;
+}
+.google{
+  border-radius: 10px;
+  padding: 1rem;
+}
+.loader {
+  color: #CF9117;
+  font-weight: 100;
+  margin-left: 40%;
+  margin-top: 10rem;
+}
 
 @keyframes blink {
   0% {

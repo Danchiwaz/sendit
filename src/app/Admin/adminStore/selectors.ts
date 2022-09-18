@@ -1,18 +1,14 @@
-import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { IParcel } from "../interfaces/createParceinterface";
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { IParcel1 } from '../interfaces/createParceinterface';
 
+export const selectParcels = createFeatureSelector<IParcel1[]>('parcels');
 
-export const selectParcels = createFeatureSelector<IParcel[]>("parcels");
-
-export const selectParcelById = (parcelId:number) => {
-    return createSelector(
-        selectParcels,
-        (parcels: IParcel[]) =>{
-            let parcelById = parcels.filter(_ => _.id == parcelId);
-            if (parcelById.length == 0){
-                 return null;
-            }
-            return parcelById[0];
-        }
-    )
-}
+export const selectParcelById = (parcelId: string) => {
+  return createSelector(selectParcels, (parcels: IParcel1[]) => {
+    let parcelById = parcels.filter((_) => _.id == parcelId);
+    if (parcelById.length == 0) {
+      return null;
+    }
+    return parcelById[0];
+  });
+};

@@ -1,0 +1,26 @@
+.outer {
+  background-color: #cf9117;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner {
+  background-color: white;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.loader {
+  color: #cf9117;
+  font-weight: 100;
+  margin-left: 30rem;
+  margin-top: 10rem;
+}

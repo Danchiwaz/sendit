@@ -60,7 +60,9 @@ export class SigninComponent implements OnInit {
         }, 1000);
       },
       error: (error) => {
+        this.show = true;
         this.isLoading = false;
+        this.message = "Username or email exist";
       },
       complete: () => console.log('Successfully registered'),
     });

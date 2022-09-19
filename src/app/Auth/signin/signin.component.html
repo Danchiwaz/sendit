@@ -19,6 +19,7 @@
         <div>
             <!-- <h2>Sign Up</h2> -->
             <p class="text-muted">Create an account to start Enjoying Sendit services</p>
+            <app-error-success *ngIf="show" [message]=message (close)="close()"></app-error-success>
         </div>
         <form [formGroup]="registerForm" (ngSubmit)="signUp()">
             <div class="row">
@@ -70,7 +71,10 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         
-                        <input [disabled]="registerForm.invalid" type="submit" value="Sign Up" class="btn btn-primary custom-btn">
+                        <button [disabled]="registerForm.invalid" type="submit"  class="btn btn-primary custom-btn">
+                            <span *ngIf="!isLoading">Sign Up</span>
+                            <span *ngIf="isLoading"><i class="fa fa-spinner fa-spin"></i></span>
+                        </button>
                     </div>
                 </div>
                 

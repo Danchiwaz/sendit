@@ -81,9 +81,5 @@ export class AdminEffects {
       })
     )
   );
-  // end of update book api
 
-  // deleting parcel 
-  
-  // end of deleting parcel 
 }

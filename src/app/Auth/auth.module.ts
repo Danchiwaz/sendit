@@ -24,6 +24,7 @@ import { ErrorComponent } from '../ErrorPage/error.component';
     FormsModule,
     StoreModule.forFeature('users', authReducer),
     EffectsModule.forFeature([AuthEffects]),
+    HttpClientModule
   ],
   exports: [LoginComponent, SigninComponent],
 })

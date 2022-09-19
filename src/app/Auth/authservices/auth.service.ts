@@ -18,7 +18,7 @@ export class AuthService {
   }
   
   registerNewUser(user:UserRegister){
-    return this.http.post<UserRegister>(`http://localhost:3000/register`, user);
+    return this.http.post<UserRegister>(`http://localhost:5000/user`, user);
   }
 
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminService } from 'src/app/Admin/services/adminService';
+import { AuthService } from '../authservices/auth.service';
 import { ILogin } from './interfaces/loginInterface';
 
 @Component({
@@ -13,31 +15,41 @@ export class LoginComponent implements OnInit {
   login:boolean = false;
   show = false;
 
-  error = 'Invalid credentials';
+  message:string;
 
   close() {
     this.login = true;
   }
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authservice:AuthService) {}
 
   ngOnInit(): void {}
 
-  OnSubmitLogin(loginForm: any) {
-    if (loginForm.username === 'Daniel' && loginForm.password === '1234') {
-      this.router.navigate(['/admin']);
-    } else if (
-      loginForm.username === 'Naftaly' &&
-      loginForm.password === '1234'
-    ) {
-      this.router.navigate(['/user']);
-    } else {
-      this.show = true
+  OnSubmitLogin(loginForm: ILogin) {
+   this.authservice.loginUser(loginForm).subscribe({
+    next: (data) =>{
+      localStorage.setItem('token', data.token as string)
+      localStorage.setItem('username', data.username as string)
+      localStorage.setItem('role', data.role as string)
+      if(data.role === 'user'){
+        this.router.navigate(['/user']);
+      }
+      else if(data.role === 'admin'){
+        this.router.navigate(['/admin']);
+      }
       
+    }, 
+    error: (error) => {
+      this.message = 'Invalid credentials';
+      this.show = true;
         setTimeout(() => {
-          this.login = true;
-        }, 1000);
-      
-    }
+          this.show = false;
+        }, 2000);
+    },
+    
+    complete: () => console.log("Completed loginin user")
+    
+   })
+   
   }
 }

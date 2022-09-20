@@ -9,6 +9,7 @@ import { selectAppState } from 'src/app/sharedAppStatus/store/app.selector';
 import { invokeParcelUpdateApi } from '../../adminStore/actions';
 import { selectParcelById } from '../../adminStore/selectors';
 import { IParcel } from '../../interfaces/createParceinterface';
+import { AdminService } from '../../services/adminService';
 
 @Component({
   selector: 'app-edit',
@@ -23,12 +24,14 @@ export class EditComponent implements OnInit {
   userAddress1: string = '';
   userLatitude1: string = '';
   userLongitude1: string = '';
+  usernames: any;
   constructor(
     private store: Store,
     private appStore: Store<AppState>,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private adminservice: AdminService
   ) {}
 
   handleAddressChange(address: any) {
@@ -49,8 +52,7 @@ export class EditComponent implements OnInit {
         return this.store.pipe(select(selectParcelById(id)));
       })
     );
-    
-
+    this.getUsernamefromDb();
     fetchFormData$.subscribe((data) => {
       if (data) {
         this.createParcelForm = this.fb.group({
@@ -84,7 +86,6 @@ export class EditComponent implements OnInit {
         longitude: this.userLongitude,
       },
     };
-    
 
     this.store.dispatch(invokeParcelUpdateApi({ payload: { ...parcelForm } }));
 
@@ -97,5 +98,18 @@ export class EditComponent implements OnInit {
         this.router.navigate(['/admin']);
       }
     });
+  }
+
+  
+    getUsernamefromDb(){
+    this.adminservice.getAllUsernames().subscribe({
+      next: (data) =>{
+         this.usernames = data;
+         console.log(this.usernames);
+         
+      },
+      error: (error) => console.log("error"),
+      complete: () => console.log("Completed ")
+    })
   }
 }

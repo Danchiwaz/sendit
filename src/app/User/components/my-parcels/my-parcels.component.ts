@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { IParcel, IParcel1 } from 'src/app/Admin/interfaces/createParceinterface';
+import { UserStateInterface } from '../../interfaces/user';
+import * as UserActions from "../../UserStore/actions"
+import { errorSelector, isLoadingSelector, parcelsSelector } from '../../UserStore/selectors';
 
 @Component({
   selector: 'app-my-parcels',
@@ -6,9 +12,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-parcels.component.css'],
 })
 export class MyParcelsComponent implements OnInit {
-  constructor() {}
+  isLoading$:Observable<Boolean>
+  error$:Observable<string | null>
+  parcels$:Observable<IParcel1[]>;
+  username:string = localStorage.getItem('username') as string;
+  constructor(private store:Store<UserStateInterface>) {
+   this.isLoading$ = this.store.pipe(select(isLoadingSelector))
+   this.error$ = this.store.pipe(select(errorSelector));
+   this.parcels$ = this.store.pipe(select(parcelsSelector))
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+     this.store.dispatch(UserActions.getallParcels())
+  }
 
   // googl maps
   display: any;

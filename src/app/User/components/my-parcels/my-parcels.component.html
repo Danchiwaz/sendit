@@ -1,117 +1,132 @@
 <div class="table-responsive table-design">
-<table class="table table-striped">
-  <thead class="thead-warning bg-design">
-    <tr>
-      <th scope="col">Track No:</th>
-      <th scope="col">Mode</th>
-      <th scope="col">From</th>
-      <th scope="col">Weight</th>
-      <th scope="col">Status</th>
-      <th scope="col">Details</th>
-    
-      
-    </tr>
-  </thead>
-  <tbody>
-    <!-- loop  -->
-    <tr>
-      <td scope="row">ADF12GFH</td>
-      <td>Received</td>
-      <td>Daniel</td>
-      <td>12kgs</td>
-      <td><button class="btn btn-sm btn-primary">Recieved</button></td>
-      <td><button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">View Details</button></td>
-     
-    </tr>
-    <!-- modal  -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">parcel.from.address | slice:0:10 }} - parcel.to.address | slice:0:10</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <google-map height="400px" width="750px" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)"
-                    (mapMousemove)="move($event)">
-                    <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
-                      [options]="markerOptions">
+  <table class="table table-striped">
+    <thead class="thead-warning bg-design">
+      <tr>
+        <th scope="col">Track No:</th>
+        <th scope="col">Mode</th>
+        <th scope="col">From</th>
+        <th scope="col">To</th>
+        <th scope="col">Weight</th>
+        <th scope="col">Price</th>
+        <th scope="col">Status</th>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <div *ngIf="isLoading$ | async"><p class="loader" *ngIf="isLoading$"><i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></p></div>
+    <tbody>
+      <!-- loop  -->
+      <tr *ngFor="let parcel of parcels$ | async; let i = index">
+        <td scope="row">ADF12GFH</td>
+        <td>
+          <span *ngIf="parcel.sender == username ">Sent</span>
+          <span *ngIf="parcel.receiver == username ">Received</span>
+          
+        </td>
+        <td>You</td>
+        <td>{{ parcel.receiver }}</td>
+        <td>{{ parcel.weight }}</td>
+        <td>Ksh {{ parcel.price }}</td>
+        <td>
+          <button class="btn btn-sm btn-primary">
+            <span *ngIf="parcel.status == 'onDelivery'">Pending</span>
+            <span *ngIf="parcel.status == 'delivered'">Received</span>
+          </button>
+        </td>
+        <td>
+          <button
+            class="btn btn-warning btn-sm"
+            [attr.id]="'triggerModalbutton-' + i"
+            data-bs-toggle="modal"
+            [attr.data-bs-target]="'#exampleModal-' + i"
+            disabled
+          >
+            See More
+          </button>
+        </td>
+        <!-- modal  -->
+        <div
+          class="modal fade"
+          [attr.id]="'exampleModal-' + i"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div
+            class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered"
+          >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  {{ parcel.fromlocation.address | slice: 0:10 }} -
+                  {{ parcel.tolocation.address | slice: 0:10 }}
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="google">
+                  <google-map
+                    height="400px"
+                    width="720px"
+                    [center]="center"
+                    [zoom]="zoom"
+                    (mapClick)="moveMap($event)"
+                    (mapMousemove)="move($event)"
+                  >
+                    <map-marker
+                      *ngFor="let markerPosition of markerPositions"
+                      [position]="markerPosition"
+                      [options]="markerOptions"
+                    >
                     </map-marker>
-
                   </google-map>
-                  <div class="row mb-2">
-                    <div class="col-md-3">
-                      <p >Tracking No: <small class="modal-side-title"><!-- modal  -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">parcel.from.address | slice:0:10 }} - parcel.to.address | slice:0:10 </h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                  <google-map height="400px" width="750px" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)"
-                    (mapMousemove)="move($event)">
-                    <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
-                      [options]="markerOptions">
-                    </map-marker>
 
-                  </google-map>
-                  <div class="row mb-2">
-                    <div class="col-md-3">
-                      <p >Tracking No: <small class="modal-side-title">parcel.tracking_no</small></p>
+                <div class="card custom-card_design">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h6>Tracking No:</h6>
+                      <small>{{ parcel.trackingno }}</small>
                     </div>
-                    <div class="col-md-3">
-                      <p >weight: <small class="modal-side-title">parcel.weight</small></p>
+                    <div class="col-md-6">
+                      <h6>Sender:</h6>
+                      <small>{{ parcel.sender }}</small>
                     </div>
-                    <div class="col-md-3">
-                      <p >Cost: <small class="modal-side-title">parcel.price }}</small></p>
+                    <div class="col-md-6">
+                      <h6>Receiver:</h6>
+                      <small>{{ parcel.receiver }}</small>
                     </div>
-                    <div class="col-md-3">
-                      <p >Receiver: <small class="modal-side-title">parcel.receiver</small></p>
-                      
+                    <div class="col-md-6">
+                      <h6>Weight:</h6>
+                      <small>{{ parcel.weight }}</small>
                     </div>
-                    <div class="col-md-3">
-                      <p >Sender: <small class="modal-side-title">parcel.sender </small></p>
-
+                    <div class="col-md-6">
+                      <h6>Departure Date:</h6>
+                      <small>{{ parcel.pickdate }}</small>
+                    </div>
+                    <div class="col-md-6">
+                      <h6>Departure Date:</h6>
+                      <small>{{ parcel.arrivaldate }}</small>
+                    </div>
+                    <div class="col-md-6">
+                      <h6>Price:</h6>
+                      <small>{{ parcel.price }}</small>
                     </div>
                   </div>
-
                 </div>
-
               </div>
             </div>
           </div>
-          <!-- end of Modal  --></small></p>
-                    </div>
-                    <div class="col-md-3">
-                      <p >weight: <small class="modal-side-title">parcel.weight </small></p>
-                    </div>
-                    <div class="col-md-3">
-                      <p >Cost: <small class="modal-side-title">parcel.price </small></p>
-                    </div>
-                    <div class="col-md-3">
-                      <p >Receiver: <small class="modal-side-title">parcel.receiver</small></p>
-                      
-                    </div>
-                    <div class="col-md-3">
-                      <p >Sender: <small class="modal-side-title">parcel.sender</small></p>
+        </div>
+        <!-- end of Modal  -->
+      </tr>
 
-                    </div>
-                  </div>
-
-                </div>
-
-              </div>
-            </div>
-          </div>
-          <!-- end of Modal  -->
-    <!-- end of the loop  -->
-    
-  </tbody>
-</table>
-
-
+      <!-- end of Modal  -->
+      <!-- end of the loop  -->
+    </tbody>
+  </table>
 </div>

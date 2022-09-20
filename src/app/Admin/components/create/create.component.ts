@@ -8,6 +8,7 @@ import { selectAppState } from 'src/app/sharedAppStatus/store/app.selector';
 import { invokeCreateParcelApi } from '../../adminStore/actions';
 import { selectParcels } from '../../adminStore/selectors';
 import { IParcel, IParcel1 } from '../../interfaces/createParceinterface';
+import { AdminService } from '../../services/adminService';
 
 @Component({
   selector: 'app-create',
@@ -21,11 +22,14 @@ export class CreateComponent implements OnInit {
   userAddress1: string = '';
   userLatitude1: string = '';
   userLongitude1: string = '';
+  usernames:any;
+  user:string;
   constructor(
     private fb: FormBuilder,
     private store: Store,
     private appState: Store<AppState>,
-    private router: Router
+    private router: Router,
+    private adminservices:AdminService
   ) {}
   handleAddressChange(address: any) {
     this.userAddress = address.formatted_address;
@@ -52,11 +56,25 @@ export class CreateComponent implements OnInit {
       trackingno: ['', [Validators.required]],
     });
     console.log(this.createParcelForm.value);
+    this.getUsernamefromDb();
   }
 
   reload(){
     this.store.pipe(select(selectParcels));
   }
+
+  getUsernamefromDb(){
+    this.adminservices.getAllUsernames().subscribe({
+      next: (data) =>{
+         this.usernames = data;
+         console.log(this.usernames);
+         
+      },
+      error: (error) => console.log("error"),
+      complete: () => console.log("Completed ")
+    })
+  }
+
 
   // create parcel
   createParcel() {

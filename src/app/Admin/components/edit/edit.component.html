@@ -5,24 +5,18 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="">Sender:</label>
-            <select formControlName="sender" #sender class="form-select" aria-label="Default select example">
-              <option selected>Select user</option>
-              <option value="mainadaniel">mainadnaniel@gmail.com</option>
-              <option value="Danchiwaz">Danchiwaz</option>
-              <option value="Robert">Robert</option>
-            </select>
+             <ng-select formControlName="sender"  class="form-control">
+             <ng-option *ngFor="let username of usernames" [value]="username.username">{{username.username}}</ng-option>
+             </ng-select>
             <small class="text-muted" *ngIf="createParcelForm.get('sender')?.invalid && createParcelForm.get('sender')?.touched">Sender required</small>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="">Reicever:</label>
-            <select formControlName="receiver" class="form-select" aria-label="Default select example">
-              <option selected>Select user</option>
-              <option value="mainadaniel">mainadnaniel@gmail.com</option>
-              <option value="Danchiwaz">Danchiwaz</option>
-              <option value="Robert">Robert</option>
-            </select>
+            <ng-select formControlName="receiver"  class="form-control">
+             <ng-option *ngFor="let username of usernames" [value]="username.username">{{username.username}}</ng-option>
+             </ng-select>
              <small class="text-muted" *ngIf="createParcelForm.get('receiver')?.invalid && createParcelForm.get('receiver')?.touched">Receiver required</small>
           </div>
         </div>

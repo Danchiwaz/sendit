@@ -17,6 +17,7 @@ import { ParcelFilterPipe } from './pipes/parcel-filter.pipe';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { ShippmentsComponent } from './components/shippments/shippments.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -44,7 +45,7 @@ import { ShippmentsComponent } from './components/shippments/shippments.componen
           { path: 'create', component: CreateComponent },
           { path: 'client', component: ClientComponent },
           { path: 'edit/:id', component: EditComponent },
-          {path:'shipped', component: ShippmentsComponent}
+          { path: 'shipped', component: ShippmentsComponent },
         ],
       },
     ]),
@@ -55,6 +56,7 @@ import { ShippmentsComponent } from './components/shippments/shippments.componen
     EffectsModule.forFeature([AdminEffects]),
     GoogleChartsModule,
     GooglePlaceModule,
+    NgSelectModule,
   ],
   exports: [AdminComponent],
 })

@@ -36,5 +36,10 @@ export class AdminService {
     return this.http.get<IClient[]>(`http://localhost:5000/parcels/clients`)
    }
 
+   getAllUsernames(){
+    return this.http.get(`http://localhost:5000/user`);
+   }
+
+
 
 }

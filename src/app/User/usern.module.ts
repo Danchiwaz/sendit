@@ -11,6 +11,10 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { RequestComponent } from './components/request/request.component';
 import { FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { userReducer } from './UserStore/reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './UserStore/effects';
 
 
 @NgModule({
@@ -24,7 +28,8 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-
+    StoreModule.forFeature('userParcels', userReducer),
+    EffectsModule.forFeature([UserEffects]),
     RouterModule.forChild([
       {
         path: '',

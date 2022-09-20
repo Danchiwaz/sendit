@@ -51,16 +51,25 @@ export class SigninComponent implements OnInit {
       password: this.registerForm.get('password')?.value,
     };
     this.isLoading = true;
+    this.show = true;
     this.authService.registerNewUser(this.filledRegisterForm).subscribe({
       next: (data) => {
+        this.message = data.message as string;
         setTimeout(() => {
-          this.show = true;
-          this.message = data.message as string;
+          this.show = false;
+          
           this.isLoading = false;
-        }, 1000);
+          this.router.navigate(['/auth/login']);
+        }, 1500);
       },
       error: (error) => {
+        
         this.isLoading = false;
+        this.show = true;
+        this.message = "Username or email exist";
+        setTimeout(() => {
+          this.show = false;
+        }, 2000);
       },
       complete: () => console.log('Successfully registered'),
     });

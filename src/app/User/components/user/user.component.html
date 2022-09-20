@@ -50,11 +50,15 @@
           <hr />
           <div class="bottom__btn">
             <div class="user_desc">
-              <h6>Daniel Maina</h6>
-              <p class="text-muted">User</p>
+              <div class="username">
+                 <i class="fa fa-user userIcon" aria-hidden="true"></i>
+              <h6>{{ username }}</h6>
+              </div>
+             
+              <p class="text-muted">{{ role }}</p>
             </div>
-            <div class="btn_log">
-              <i class="fa-solid logout_btn fa-power-off"></i>
+            <div>
+              <button (click)="logout()" class="btn btn-logout">Logout</button>
             </div>
           </div>
         </div>
@@ -92,7 +96,7 @@
               <div class="outer">
                 <div class="inner">
                   <div class=""><p>Thank you</p></div>
-                  <div><small>Daniel</small></div>
+                  <div><small>{{ username }}</small></div>
                 </div>
               </div>
             </div>

@@ -11,3 +11,8 @@ tr{
 .bg-design{
     background-color:#cf9117 ;
 }
+.loader {
+    color: #CF9117;
+    margin-top: 2rem;
+    margin-left: 2rem;
+}

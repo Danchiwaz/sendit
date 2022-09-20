@@ -57,6 +57,7 @@
 
 .bottom__btn {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding-top: 2rem;
@@ -67,6 +68,11 @@
     font-weight: 900;
     font-size: 28px;
     cursor: pointer;
+}
+.btn-logout{
+    background-color: #cf9117;
+    color: white;
+    width: 100%;
 }
 
 .btn_log:hover {
@@ -278,6 +284,23 @@ margin-left: 1rem;
     margin-bottom: 1rem;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.user_desc{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+}
+.user_desc > p{
+    margin-top: 0.5rem;
+}
+.username{
+    display: flex;
+    
+}
+.username > i{
+    background-color:white;
+    color: white;
 }
 
         

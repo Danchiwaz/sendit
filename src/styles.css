@@ -5,3 +5,9 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
+.ng-dropdown-panel .scroll-host {
+  background-color: white;
+  margin-left: -15px;
+  padding: 10px;
+}

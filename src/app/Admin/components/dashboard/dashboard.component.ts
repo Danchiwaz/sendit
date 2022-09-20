@@ -7,6 +7,7 @@ import { invokeParcelsApi } from '../../adminStore/actions';
 import { selectParcels } from '../../adminStore/selectors';
 import { chart2, mychart1 } from '../../charts/charts';
 import { IParcel, IParcel1 } from '../../interfaces/createParceinterface';
+import { AdminService } from '../../services/adminService';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -22,12 +23,14 @@ export class DashboardComponent implements OnInit {
   toLat: number;
   isLoading: boolean = false;
   showModal: boolean = false;
+  sent: boolean = false;
+  message: string;
   // pagination variable
   p: number = 1;
   // filter function
   filter = '';
   // collection: any[] = [];
-  constructor(private store: Store, private elementRef: ElementRef) {}
+  constructor(private store: Store, private elementRef: ElementRef, private adminService:AdminService) {}
 
   ngOnInit(): void {
     this.store.dispatch(invokeParcelsApi());
@@ -69,4 +72,20 @@ export class DashboardComponent implements OnInit {
       lng: 36.821946,
     },
   ];
+  updateParcelAsDelivered(id:any){
+    this.adminService.updateAsDelivered(id).subscribe({
+      next: (data) =>{
+       this.sent = true
+       this.message = data.message;
+       setTimeout(() => {
+        this.sent = false;
+       }, 1500);
+       window.location.reload();
+      },
+      
+      error: (error) => console.log(error),
+      complete:() => console.log("complete updating the parcel")
+      
+    })
+  }
 }

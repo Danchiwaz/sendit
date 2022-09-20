@@ -17,10 +17,11 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppReducer } from './sharedAppStatus/store/app.reducer';
 import { ErrorComponent } from './ErrorPage/error.component';
 import { NavbarDirective } from './Directives/navbar.directive';
+import { TokenInterceptorService } from './Admin/services/token-interceptor.service';
 
 
 
@@ -40,7 +41,13 @@ import { NavbarDirective } from './Directives/navbar.directive';
     }),
     EffectsModule.forRoot([]),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

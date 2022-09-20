@@ -1,27 +1,30 @@
 .status {
-    background-color: #CF9117;
-    text-align: center;
-    width: 40%;
-    color: white;
-    border-radius: 60px;
+  background-color: #cf9117;
+  text-align: center;
+  width: 40%;
+  color: white;
+  border-radius: 60px;
 }
 
 tr {
-    font-weight: 100;
+  font-weight: 100;
 }
 
 .status-sent {
-    background-color: #5c3efb;
-    text-align: center;
-    width: 40%;
-    color: white;
-    border-radius: 60px;
+  background-color: #5c3efb;
+  text-align: center;
+  width: 40%;
+  color: white;
+  border-radius: 60px;
 }
 .table-design {
-    background-color: white;
-    padding: 1rem;
-    border-radius: 10px;
-    margin-left: -1rem;
-    margin-right: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-left: -1rem;
+  margin-right: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.bg-design {
+  background-color: #cf9117;
 }

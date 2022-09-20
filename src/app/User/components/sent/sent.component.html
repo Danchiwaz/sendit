@@ -1,19 +1,23 @@
-<div class="">
+  <div class="">
   <table class="table table-striped">
-    <thead class="thead-warning bg-warning">
+    <thead class="thead-warning bg-design">
       <tr>
         <th scope="col">Track No:</th>
+        <th scope="col">From</th>
         <th scope="col">To</th>
+        <th scope="col">weight</th>
+        <th scope="col">price</th>
+      
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td scope="row">ADF12GFH</td>
-        <td>John Doe</td>
-      </tr>
-      <tr>
-        <td scope="row">ADF12GFH</td>
-        <td>Daniel Mana</td>
+    <tbody>  
+      <tr *ngFor="let parcel of parcels$ |async">
+        <td scope="row">{{ parcel.trackingno }}</td>
+        <td>You</td>
+        <td>{{parcel.receiver }}</td>
+        <td>{{ parcel.weight }}</td>
+        <td>Ksh {{ parcel.price }}</td>
+        
       </tr>
     </tbody>
   </table>

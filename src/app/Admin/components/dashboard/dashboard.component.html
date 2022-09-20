@@ -1,168 +1,211 @@
-<div class="row workarea ">
-        <div class="search_bar">
-          <div class="search_menu" >
-            <i class="fa-solid fa-magnifying-glass"></i
-            ><input type="text" placeholder="Search here for a Parcel" [(ngModel)]="filter" />
-          </div>
-        </div>
-      </div>
+<div class="row workarea">
+  <div class="search_bar">
+    <div class="search_menu">
+      <i class="fa-solid fa-magnifying-glass"></i
+      ><input
+        type="text"
+        placeholder="Search here for a Parcel"
+        [(ngModel)]="filter"
+      />
+    </div>
+  </div>
+</div>
 
-     <div class="container">
-          <div class="row gap-1">
-            <div class="col-md-4 card shadow" style="margin-bottom: 1rem;">
-              <canvas id="myChart" height="50" width="100"></canvas>
-            </div>
-            <div class="col-md-4 card shadow" style="margin-bottom: 1rem;">
-              <canvas id="mydonurght" height="50" width="100"></canvas>
-            </div>
-            <div class="col-md-2">
-              <div class="outer">
-                <div class="inner">
-                  <div class=""><p>Time Worked</p></div>
-                  <div><small>120Hrs</small></div>
-                </div>
-              </div>
-            </div>
-            
-  
-          </div>
-        </div>
-<div class="row">
-  <!-- loop -->
-  <P class="loader" *ngIf="isLoading"><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i></P>
-  <ng-container *ngIf="parcels$ | async as parcels">
-  <div class="col-md-6 col-sm-12" *ngFor="let parcel of parcels | parcelFilter:filter | paginate: { itemsPerPage: 2, currentPage: p };let i = index ">
-    <div class="card mb-2">
-      <div class="card-header header-card">
-        <div class="status">
-          <span>{{ parcel.status }}</span>
-        </div>
-        <div class="card-btn">
-          <div class="update" [routerLink]="['/admin/edit', parcel.id]"><i class="fa-solid fa-pen-nib"></i></div>
-          <div class="Delete"><i class="fa-solid fa-trash"></i></div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-6">
-            <small class="text-muted">Tracking No:</small>
-            <p class="text-sm">{{ parcel.trackingno }}</p>
-          </div>
-          <div class="col-md-6 text-end">
-            <small class="text-muted">Destination</small>
-            <p class="text-sm">{{ parcel.fromlocation.address | slice:0:6 }} - {{ parcel.tolocation.address | slice:0:6 }}</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 col-sm-12">
-            <div class="departure">
-              <div class="dot"></div>
-              <div class="dep_desc">
-                <p class="dep">Departure Date</p>
-                <p class="date">{{ parcel.pickdate }}</p>
-              </div>
-            </div>
-            <div class="departure">
-              <div class="dot"></div>
-              <div class="dep_desc">
-                <p class="dep">Arrival Date</p>
-                <p class="date">{{ parcel.arrivaldate }}</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-sm-12">
-            <button class="btn-map" [attr.id]="'triggerModalbutton-' + i" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal-' + i">Show Map</button>
-          </div>
-          <!-- modal  -->
-          <div class="modal fade"  [attr.id]="'exampleModal-' + i" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">{{ parcel.fromlocation.address | slice:0:10 }} - {{ parcel.tolocation.address | slice:0:10 }}</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <div class="google">
-                    <google-map  height="400px" width="720px" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)"
-                    (mapMousemove)="move($event)">
-                    <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
-                      [options]="markerOptions">
-                    </map-marker>
-
-                  </google-map>
-                  </div>
-                 
-                  <div class="card custom-card_design">
-                    <div class="row">
-                     <div class="col-md-6">
-                      <h6 >Tracking No:</h6>
-                      <small>{{ parcel.trackingno }}</small>
-                    </div>
-                     <div class="col-md-6">
-                      <h6 >Sender:</h6>
-                      <small>{{ parcel.sender }}</small>
-                    </div>
-                     <div class="col-md-6">
-                      <h6 >Receiver:</h6>
-                      <small>{{ parcel.receiver }}</small>
-                    </div>
-                     <div class="col-md-6">
-                      <h6 >Weight:</h6>
-                      <small>{{ parcel.weight }}</small>
-                    </div>
-                     <div class="col-md-6">
-                      <h6 >Departure Date:</h6>
-                      <small>{{ parcel.pickdate }}</small>
-                    </div>
-                     <div class="col-md-6">
-                      <h6 >Departure Date:</h6>
-                      <small>{{ parcel.arrivaldate }}</small>
-                    </div>
-                     <div class="col-md-6">
-                      <h6 >Price:</h6>
-                      <small>{{ parcel.price }}</small>
-                    </div>
-                    </div>
-                  </div>
-                 
-
-                </div>
-
-              </div>
-            </div>
-          </div>
-          <!-- end of Modal  -->
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="row">
-          <div class="col-md-4 text-center">
-            <p class="client">Client</p>
-            <p class="name">{{ parcel.sender }}</p>
-          </div>
-          <div class="col-md-4 text-center">
-            <p class="client">Weight</p>
-            <p class="name">{{ parcel.weight }} Kgs</p>
-          </div>
-          <div class="col-md-4 text-center">
-            <p class="client">Price</p>
-            <p class="name">Ksh {{ parcel.price}}</p>
-          </div>
-        </div>
-        <div class="row">
-          <button class="deliver_btn">Mark as Delivered</button>
+<div class="container">
+  <div class="row gap-1">
+    <div class="col-md-4 card shadow" style="margin-bottom: 1rem">
+      <canvas id="myChart" height="50" width="100"></canvas>
+    </div>
+    <div class="col-md-4 card shadow" style="margin-bottom: 1rem">
+      <canvas id="mydonurght" height="50" width="100"></canvas>
+    </div>
+    <div class="col-md-2">
+      <div class="outer">
+        <div class="inner">
+          <div class=""><p>Time Worked</p></div>
+          <div><small>120Hrs</small></div>
         </div>
       </div>
     </div>
-
   </div>
+</div>
+<div class="row">
+  <!-- loop -->
+  <P class="loader" *ngIf="isLoading"
+    ><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i
+  ></P>
+  <ng-container *ngIf="parcels$ | async as parcels">
+    <div
+      class="col-md-6 col-sm-12"
+      *ngFor="
+        let parcel of parcels
+          | parcelFilter: filter
+          | paginate: { itemsPerPage: 2, currentPage: p };
+        let i = index
+      "
+    >
+      <div class="card mb-2">
+        <div class="card-header header-card">
+          <div class="status" ngClass="{delivered: parcel.status == 'delivered' }">
+            <span >{{ parcel.status }}</span>
+          </div>
+          <div *ngIf="sent" class="alertonUpdate">parcel Delivered successfully </div>
+          <div class="card-btn">
+            <div class="update" [routerLink]="['/admin/edit', parcel.id]">
+              <i class="fa-solid fa-pen-nib"></i>
+            </div>
+            <div  class="Delete" *ngIf="parcel.status == 'onDelivery'">
+              <i class="fa-solid fa-trash"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <small class="text-muted">Tracking No:</small>
+              <p class="text-sm">{{ parcel.trackingno }}</p>
+            </div>
+            <div class="col-md-6 text-end">
+              <small class="text-muted">Destination</small>
+              <p class="text-sm">
+                {{ parcel.fromlocation.address | slice: 0:6 }} -
+                {{ parcel.tolocation.address | slice: 0:6 }}
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <div class="departure">
+                <div class="dot"></div>
+                <div class="dep_desc">
+                  <p class="dep">Departure Date</p>
+                  <p class="date">{{ parcel.pickdate }}</p>
+                </div>
+              </div>
+              <div class="departure">
+                <div class="dot"></div>
+                <div class="dep_desc">
+                  <p class="dep">Arrival Date</p>
+                  <p class="date">{{ parcel.arrivaldate }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <button
+                class="btn-map"
+                [attr.id]="'triggerModalbutton-' + i"
+                data-bs-toggle="modal"
+                [attr.data-bs-target]="'#exampleModal-' + i"
+              >
+                Show Map
+              </button>
+            </div>
+            <!-- modal  -->
+            <div
+              class="modal fade"
+              [attr.id]="'exampleModal-' + i"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div
+                class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered"
+              >
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                      {{ parcel.fromlocation.address | slice: 0:10 }} -
+                      {{ parcel.tolocation.address | slice: 0:10 }}
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="google">
+                      <google-map
+                        height="400px"
+                        width="720px"
+                        [center]="center"
+                        [zoom]="zoom"
+                        (mapClick)="moveMap($event)"
+                        (mapMousemove)="move($event)"
+                      >
+                        <map-marker
+                          *ngFor="let markerPosition of markerPositions"
+                          [position]="markerPosition"
+                          [options]="markerOptions"
+                        >
+                        </map-marker>
+                      </google-map>
+                    </div>
+
+                    <div class="card custom-card_design">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <h6>Tracking No:</h6>
+                          <small>{{ parcel.trackingno }}</small>
+                        </div>
+                        <div class="col-md-6">
+                          <h6>Sender:</h6>
+                          <small>{{ parcel.sender }}</small>
+                        </div>
+                        <div class="col-md-6">
+                          <h6>Receiver:</h6>
+                          <small>{{ parcel.receiver }}</small>
+                        </div>
+                        <div class="col-md-6">
+                          <h6>Weight:</h6>
+                          <small>{{ parcel.weight }}</small>
+                        </div>
+                        <div class="col-md-6">
+                          <h6>Departure Date:</h6>
+                          <small>{{ parcel.pickdate }}</small>
+                        </div>
+                        <div class="col-md-6">
+                          <h6>Departure Date:</h6>
+                          <small>{{ parcel.arrivaldate }}</small>
+                        </div>
+                        <div class="col-md-6">
+                          <h6>Price:</h6>
+                          <small>{{ parcel.price }}</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end of Modal  -->
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <p class="client">Client</p>
+              <p class="name">{{ parcel.sender }}</p>
+            </div>
+            <div class="col-md-4 text-center">
+              <p class="client">Weight</p>
+              <p class="name">{{ parcel.weight }} Kgs</p>
+            </div>
+            <div class="col-md-4 text-center">
+              <p class="client">Price</p>
+              <p class="name">Ksh {{ parcel.price }}</p>
+            </div>
+          </div>
+          <div class="row" *ngIf="parcel.status == 'onDelivery' ">
+            <button (click)="updateParcelAsDelivered(parcel.id )" class="deliver_btn">Mark as Delivered</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </ng-container>
   <!-- end of loop -->
-
-
 </div>
 <ng-container *ngIf="!isLoading">
-<pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </ng-container>
-

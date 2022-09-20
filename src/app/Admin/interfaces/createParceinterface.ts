@@ -49,4 +49,8 @@ isreceived?:string;
 isdeleted?:string;
 role?: string;
 }
+
+export interface IResponse{
+  message: string;
+}
  

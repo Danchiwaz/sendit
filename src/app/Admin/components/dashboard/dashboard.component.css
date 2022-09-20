@@ -279,7 +279,15 @@
   margin-left: 40%;
   margin-top: 10rem;
 }
-
+.delivered{
+  background-color: #5732fb;
+}
+.alertonUpdate{
+  background: #CF9117;
+  color: white;
+  padding: 0.2rem 1rem;
+  border-radius: 10px;
+}
 @keyframes blink {
   0% {
     opacity: 0;
